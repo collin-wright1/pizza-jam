@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://csxrn0mv1uxr2"]
+
+[ext_resource type="Texture2D" uid="uid://7l42n75o8rhk" path="res://icon.svg" id="1_sd3t2"]
+
+[node name="Icon" type="Sprite2D"]
+position = Vector2(111, 106)
+texture = ExtResource("1_sd3t2")
+
+[node name="TextEdit" type="TextEdit" parent="."]
+offset_left = -63.0
+offset_top = 88.0
+offset_right = 146.0
+offset_bottom = 191.0
+text = "Hello Worlt"
