@@ -4,6 +4,9 @@ extends Node2D
 
 @onready var static_body_2d: StaticBody2D = $StaticBody2D
 @onready var visual_selection: TileMapLayer = $VisualSelection
+@onready var rotate_holder: Node2D = $RotateHolder
+
+
 
 var is_rotating : bool = false
 
@@ -40,6 +43,7 @@ func _on_static_body_2d_input_event(viewport: Node, event: InputEvent, shape_idx
 			
 			
 func rotate_left() -> Array:
+	rotate_holder.rotation_degrees -= 60
 	var surrounding_tiles = [Vector2i(0,-1),Vector2i(1,-1),Vector2i(1,0),Vector2i(0,1),Vector2i(-1,0),Vector2i(-1,-1)]
 	var original_tiles = []
 	for vector in surrounding_tiles:
@@ -53,6 +57,7 @@ func rotate_left() -> Array:
 	
 	
 func rotate_right() -> Array:
+	rotate_holder.rotation_degrees += 60
 	var surrounding_tiles = [Vector2i(0,-1),Vector2i(1,-1),Vector2i(1,0),Vector2i(0,1),Vector2i(-1,0),Vector2i(-1,-1)]
 	var original_tiles = []
 	for vector in surrounding_tiles:
@@ -64,4 +69,5 @@ func rotate_right() -> Array:
 		count +=1
 		
 	return	original_tiles
+	
 	

@@ -1,9 +1,10 @@
-[gd_scene load_steps=16 format=4 uid="uid://b72wqoj6jd72s"]
+[gd_scene load_steps=18 format=4 uid="uid://b72wqoj6jd72s"]
 
 [ext_resource type="Script" path="res://test_area.gd" id="1_gpmjd"]
 [ext_resource type="Texture2D" uid="uid://cd12eydfhe43q" path="res://tilemap.png" id="1_p5xn4"]
 [ext_resource type="Texture2D" uid="uid://dluke1tljdocb" path="res://hexagon.png" id="3_p76b2"]
 [ext_resource type="Script" path="res://visualmap.gd" id="4_sg763"]
+[ext_resource type="Texture2D" uid="uid://5dwjqrlp4eag" path="res://mousemagewip.png" id="5_xqirl"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4wao0"]
 texture = ExtResource("1_p5xn4")
@@ -58,6 +59,9 @@ tile_size = Vector2i(100, 100)
 sources/1 = SubResource("TileSetAtlasSource_4wao0")
 sources/2 = SubResource("TileSetAtlasSource_5wxjy")
 
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_5pmh6"]
+b = Vector2(0, 300)
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_blh00"]
 texture = ExtResource("1_p5xn4")
 margins = Vector2i(0, 4)
@@ -105,6 +109,21 @@ sources/1 = SubResource("TileSetAtlasSource_3mddg")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qhtdw"]
 radius = 126.695
+
+[sub_resource type="Animation" id="Animation_n0ool"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1.25, 1.25)]
+}
 
 [sub_resource type="Animation" id="Animation_ecefi"]
 resource_name = "lower_down"
@@ -160,21 +179,6 @@ tracks/1/keys = {
 "values": [true]
 }
 
-[sub_resource type="Animation" id="Animation_n0ool"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1.25, 1.25)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gpc2v"]
 _data = {
 "RESET": SubResource("Animation_n0ool"),
@@ -186,13 +190,29 @@ _data = {
 script = ExtResource("1_gpmjd")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
-tile_map_data = PackedByteArray("AAAAAAAAAgAAAAAAAAABAAAAAgAAAAAAAwABAP//AgAAAAAAAgAAAAEAAgAAAAAABAD//wAAAgAAAAAABQD/////AgAAAAAABgAAAP//AgAAAAAAAQABAAEAAgAAAAAAAQACAAAAAgAAAAAABgACAP//AgAAAAAAAAADAP//AgAAAAAAAQAEAAAAAgAAAAAAAgAEAAEAAgAAAAAAAwADAAEAAgAAAAAABAADAAAAAgAAAAAAAAACAAIAAgAAAAAAAgADAAIAAgAAAAAAAQAEAAIAAgAAAAAAAgAFAAEAAgAAAAAAAgAGAAEAAgAAAAAAAAAHAAAAAgAAAAAAAAAGAAAAAgAAAAAAAAAHAP//AgAAAAAAAAAGAP//AgAAAAAAAAAFAP//AgAAAAAAAgAFAAIAAgAAAAAAAAAGAAIAAgAAAAAAAAAHAAEAAgAAAAAAAAAIAAEAAgAAAAAAAAAIAAAAAgAAAAAAAAAIAP//AgAAAAAAAAAHAP7/AgAAAAAAAAAFAAAAAgAAAAAAAwAGAP7/AgAAAAAAAAAFAP3/AgAAAAAAAAAEAP7/AgAAAAAAAAADAP7/AgAAAAAAAAAFAP7/AgAAAAAAAAAEAP//AgAAAAAAAQACAP7/AgAAAAAAAAABAP7/AgAAAAAAAAACAAEAAgAAAAAABQD+/wIAAgAAAAAAAAD//wIAAgAAAAAAAAD//wEAAgAAAAAAAAAAAAIAAgAAAAAAAgABAAIAAgAAAAAAAQABAAMAAgAAAAAAAAAAAAMAAgAAAAAAAAACAAMAAgAAAAAAAQADAAMAAgAAAAAAAAAEAAMAAgAAAAAAAAACAAQAAgAAAAAAAAAHAP3/AgAAAAAAAAAJAP//AgAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAAAAAAAAgAAAAAAAAABAAAAAgAAAAAAAwAAAAEAAgAAAAAABAD//wAAAgAAAAAABQD/////AgAAAAAABgAAAP//AgAAAAAAAQABAAEAAgAAAAAAAQACAAAAAgAAAAAABgACAP//AgAAAAAAAAADAP//AgAAAAAAAQAEAAAAAgAAAAAAAgAEAAEAAgAAAAAAAwADAAEAAgAAAAAABAADAAAAAgAAAAAAAAACAAIAAgAAAAAAAgADAAIAAgAAAAAAAQAEAAIAAgAAAAAAAgAFAAEAAgAAAAAAAgAGAAEAAgAAAAAAAAAHAAAAAgAAAAAAAAAGAAAAAgAAAAAAAAAHAP//AgAAAAAAAAAGAP//AgAAAAAAAAAFAP//AgAAAAAAAgAFAAIAAgAAAAAAAAAGAAIAAgAAAAAAAAAHAAEAAgAAAAAAAAAIAAEAAgAAAAAAAAAIAAAAAgAAAAAAAAAIAP//AgAAAAAAAAAHAP7/AgAAAAAAAAAFAAAAAgAAAAAAAwAGAP7/AgAAAAAAAAAFAP3/AgAAAAAAAAAEAP7/AgAAAAAAAAADAP7/AgAAAAAAAAAFAP7/AgAAAAAAAAAEAP//AgAAAAAAAQACAP7/AgAAAAAAAAABAP7/AgAAAAAAAAACAAEAAgAAAAAABQD+/wIAAgAAAAAAAAD//wIAAgAAAAAAAAD//wEAAgAAAAAAAAAAAAIAAgAAAAAAAgABAAIAAgAAAAAAAQABAAMAAgAAAAAAAAAAAAMAAgAAAAAAAAACAAMAAgAAAAAAAQADAAMAAgAAAAAAAAAEAAMAAgAAAAAAAAACAAQAAgAAAAAAAAAHAP3/AgAAAAAAAAAJAP//AgAAAAAAAAABAP//AgAAAAAAAgA=")
 tile_set = SubResource("TileSet_8g7c7")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.75, 0.75)
 
+[node name="HeroHolder" type="Node2D" parent="."]
+
+[node name="Hero" type="Node2D" parent="HeroHolder"]
+position = Vector2(-25, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="HeroHolder/Hero"]
+texture = ExtResource("5_xqirl")
+
+[node name="Area2D" type="Area2D" parent="HeroHolder/Hero"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HeroHolder/Hero/Area2D"]
+shape = SubResource("SegmentShape2D_5pmh6")
+
+[node name="EnemyHolder" type="Node2D" parent="."]
+
 [node name="Visualmap" type="Node2D" parent="."]
+visible = false
 position = Vector2(-185.415, 0)
 scale = Vector2(1.25, 1.25)
 script = ExtResource("4_sg763")
@@ -203,6 +223,7 @@ tile_map_data = PackedByteArray("AAAAAAAAAQAAAAAAAQD/////AQAAAAAAAQD//wAAAQAAAAA
 tile_set = SubResource("TileSet_26sf0")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Visualmap"]
+visible = false
 input_pickable = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Visualmap/StaticBody2D"]
@@ -213,6 +234,36 @@ shape = SubResource("CircleShape2D_qhtdw")
 libraries = {
 "": SubResource("AnimationLibrary_gpc2v")
 }
+
+[node name="RotateHolder" type="Node2D" parent="Visualmap"]
+
+[node name="Center" type="Sprite2D" parent="Visualmap/RotateHolder"]
+position = Vector2(10.415, 0)
+texture = ExtResource("5_xqirl")
+
+[node name="Top" type="Sprite2D" parent="Visualmap/RotateHolder"]
+position = Vector2(10.415, -100)
+texture = ExtResource("5_xqirl")
+
+[node name="TopRight" type="Sprite2D" parent="Visualmap/RotateHolder"]
+position = Vector2(85.415, -50)
+texture = ExtResource("5_xqirl")
+
+[node name="BottomRight" type="Sprite2D" parent="Visualmap/RotateHolder"]
+position = Vector2(85.415, 50)
+texture = ExtResource("5_xqirl")
+
+[node name="Bottom" type="Sprite2D" parent="Visualmap/RotateHolder"]
+position = Vector2(10.415, 100)
+texture = ExtResource("5_xqirl")
+
+[node name="BottomLeft" type="Sprite2D" parent="Visualmap/RotateHolder"]
+position = Vector2(-64.585, 50)
+texture = ExtResource("5_xqirl")
+
+[node name="TopLeft" type="Sprite2D" parent="Visualmap/RotateHolder"]
+position = Vector2(-64.585, -50)
+texture = ExtResource("5_xqirl")
 
 [connection signal="input_event" from="Visualmap/StaticBody2D" to="." method="_on_static_body_2d_input_event"]
 [connection signal="input_event" from="Visualmap/StaticBody2D" to="Visualmap" method="_on_static_body_2d_input_event"]
