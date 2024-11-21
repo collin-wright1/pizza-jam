@@ -11,13 +11,13 @@ config_version=5
 [application]
 
 config/name="PizzaJamNovember"
-run/main_scene="res://test_area.tscn"
+run/main_scene="res://scenes/test_area.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="res://sprites/icon.svg"
 
 [autoload]
 
-Global="*res://global.gd"
+Global="*res://scripts/global.gd"
 
 [display]
 

@@ -1,13 +1,13 @@
 [gd_scene load_steps=18 format=4 uid="uid://b72wqoj6jd72s"]
 
-[ext_resource type="Script" path="res://test_area.gd" id="1_gpmjd"]
-[ext_resource type="Texture2D" uid="uid://cd12eydfhe43q" path="res://tilemap.png" id="1_p5xn4"]
-[ext_resource type="Texture2D" uid="uid://dluke1tljdocb" path="res://hexagon.png" id="3_p76b2"]
-[ext_resource type="Script" path="res://visualmap.gd" id="4_sg763"]
-[ext_resource type="Texture2D" uid="uid://5dwjqrlp4eag" path="res://mousemagewip.png" id="5_xqirl"]
+[ext_resource type="Script" path="res://scripts/test_area.gd" id="1_ksqw7"]
+[ext_resource type="Texture2D" uid="uid://cd12eydfhe43q" path="res://sprites/tilemap.png" id="2_o6lid"]
+[ext_resource type="Texture2D" uid="uid://dluke1tljdocb" path="res://sprites/hexagon.png" id="3_wplyi"]
+[ext_resource type="Texture2D" uid="uid://dtqovca3rbpnw" path="res://sprites/mousemagewip.png" id="4_16s7s"]
+[ext_resource type="Script" path="res://scripts/visualmap.gd" id="5_ly1wp"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4wao0"]
-texture = ExtResource("1_p5xn4")
+texture = ExtResource("2_o6lid")
 margins = Vector2i(0, 4)
 texture_region_size = Vector2i(56, 48)
 1:0/0 = 0
@@ -32,7 +32,7 @@ texture_region_size = Vector2i(56, 48)
 0:0/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5wxjy"]
-texture = ExtResource("3_p76b2")
+texture = ExtResource("3_wplyi")
 texture_region_size = Vector2i(100, 100)
 0:0/next_alternative_id = 7
 0:0/0 = 0
@@ -63,7 +63,7 @@ sources/2 = SubResource("TileSetAtlasSource_5wxjy")
 b = Vector2(0, 300)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_blh00"]
-texture = ExtResource("1_p5xn4")
+texture = ExtResource("2_o6lid")
 margins = Vector2i(0, 4)
 texture_region_size = Vector2i(56, 48)
 0:0/next_alternative_id = 3
@@ -80,7 +80,7 @@ texture_region_size = Vector2i(56, 48)
 3:1/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3mddg"]
-texture = ExtResource("3_p76b2")
+texture = ExtResource("3_wplyi")
 texture_region_size = Vector2i(100, 100)
 0:0/next_alternative_id = 7
 0:0/0 = 0
@@ -187,10 +187,10 @@ _data = {
 }
 
 [node name="TestArea" type="Node2D"]
-script = ExtResource("1_gpmjd")
+script = ExtResource("1_ksqw7")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
-tile_map_data = PackedByteArray("AAAAAAAAAgAAAAAAAAABAAAAAgAAAAAAAwAAAAEAAgAAAAAABAD//wAAAgAAAAAABQD/////AgAAAAAABgAAAP//AgAAAAAAAQABAAEAAgAAAAAAAQACAAAAAgAAAAAABgACAP//AgAAAAAAAAADAP//AgAAAAAAAQAEAAAAAgAAAAAAAgAEAAEAAgAAAAAAAwADAAEAAgAAAAAABAADAAAAAgAAAAAAAAACAAIAAgAAAAAAAgADAAIAAgAAAAAAAQAEAAIAAgAAAAAAAgAFAAEAAgAAAAAAAgAGAAEAAgAAAAAAAAAHAAAAAgAAAAAAAAAGAAAAAgAAAAAAAAAHAP//AgAAAAAAAAAGAP//AgAAAAAAAAAFAP//AgAAAAAAAgAFAAIAAgAAAAAAAAAGAAIAAgAAAAAAAAAHAAEAAgAAAAAAAAAIAAEAAgAAAAAAAAAIAAAAAgAAAAAAAAAIAP//AgAAAAAAAAAHAP7/AgAAAAAAAAAFAAAAAgAAAAAAAwAGAP7/AgAAAAAAAAAFAP3/AgAAAAAAAAAEAP7/AgAAAAAAAAADAP7/AgAAAAAAAAAFAP7/AgAAAAAAAAAEAP//AgAAAAAAAQACAP7/AgAAAAAAAAABAP7/AgAAAAAAAAACAAEAAgAAAAAABQD+/wIAAgAAAAAAAAD//wIAAgAAAAAAAAD//wEAAgAAAAAAAAAAAAIAAgAAAAAAAgABAAIAAgAAAAAAAQABAAMAAgAAAAAAAAAAAAMAAgAAAAAAAAACAAMAAgAAAAAAAQADAAMAAgAAAAAAAAAEAAMAAgAAAAAAAAACAAQAAgAAAAAAAAAHAP3/AgAAAAAAAAAJAP//AgAAAAAAAAABAP//AgAAAAAAAgA=")
+tile_map_data = PackedByteArray("AAABAAAAAgAAAAAAAwAAAAEAAgAAAAAABAD//wAAAgAAAAAABQD/////AgAAAAAABgAAAP//AgAAAAAAAQABAAEAAgAAAAAAAQACAAAAAgAAAAAABgACAP//AgAAAAAAAAADAP//AgAAAAAAAQAEAAAAAgAAAAAAAgAEAAEAAgAAAAAAAwADAAEAAgAAAAAABAADAAAAAgAAAAAAAAACAAIAAgAAAAAAAgADAAIAAgAAAAAAAQAEAAIAAgAAAAAAAgAFAAEAAgAAAAAAAgAGAAEAAgAAAAAAAAAHAAAAAgAAAAAAAAAGAAAAAgAAAAAAAAAHAP//AgAAAAAAAAAGAP//AgAAAAAAAAAFAP//AgAAAAAAAgAFAAIAAgAAAAAAAAAGAAIAAgAAAAAAAAAHAAEAAgAAAAAAAAAIAAEAAgAAAAAAAAAIAAAAAgAAAAAAAAAIAP//AgAAAAAAAAAHAP7/AgAAAAAAAAAFAAAAAgAAAAAAAwAGAP7/AgAAAAAAAAAFAP3/AgAAAAAAAAAEAP7/AgAAAAAAAAADAP7/AgAAAAAAAAAFAP7/AgAAAAAAAAAEAP//AgAAAAAAAQACAP7/AgAAAAAAAAABAP7/AgAAAAAAAAACAAEAAgAAAAAABQD+/wIAAgAAAAAAAAD//wIAAgAAAAAAAAD//wEAAgAAAAAAAAAAAAIAAgAAAAAAAgABAAIAAgAAAAAAAQABAAMAAgAAAAAAAAAAAAMAAgAAAAAAAAACAAMAAgAAAAAAAQADAAMAAgAAAAAAAAAEAAMAAgAAAAAAAAACAAQAAgAAAAAAAAAHAP3/AgAAAAAAAAAJAP//AgAAAAAAAAABAP//AgAAAAAAAgAAAAAAAgAAAAAAAAA=")
 tile_set = SubResource("TileSet_8g7c7")
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -202,7 +202,7 @@ zoom = Vector2(0.75, 0.75)
 position = Vector2(-25, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="HeroHolder/Hero"]
-texture = ExtResource("5_xqirl")
+texture = ExtResource("4_16s7s")
 
 [node name="Area2D" type="Area2D" parent="HeroHolder/Hero"]
 
@@ -215,7 +215,7 @@ shape = SubResource("SegmentShape2D_5pmh6")
 visible = false
 position = Vector2(-185.415, 0)
 scale = Vector2(1.25, 1.25)
-script = ExtResource("4_sg763")
+script = ExtResource("5_ly1wp")
 
 [node name="VisualSelection" type="TileMapLayer" parent="Visualmap"]
 position = Vector2(-50, -50)
@@ -239,31 +239,31 @@ libraries = {
 
 [node name="Center" type="Sprite2D" parent="Visualmap/RotateHolder"]
 position = Vector2(10.415, 0)
-texture = ExtResource("5_xqirl")
+texture = ExtResource("4_16s7s")
 
 [node name="Top" type="Sprite2D" parent="Visualmap/RotateHolder"]
 position = Vector2(10.415, -100)
-texture = ExtResource("5_xqirl")
+texture = ExtResource("4_16s7s")
 
 [node name="TopRight" type="Sprite2D" parent="Visualmap/RotateHolder"]
 position = Vector2(85.415, -50)
-texture = ExtResource("5_xqirl")
+texture = ExtResource("4_16s7s")
 
 [node name="BottomRight" type="Sprite2D" parent="Visualmap/RotateHolder"]
 position = Vector2(85.415, 50)
-texture = ExtResource("5_xqirl")
+texture = ExtResource("4_16s7s")
 
 [node name="Bottom" type="Sprite2D" parent="Visualmap/RotateHolder"]
 position = Vector2(10.415, 100)
-texture = ExtResource("5_xqirl")
+texture = ExtResource("4_16s7s")
 
 [node name="BottomLeft" type="Sprite2D" parent="Visualmap/RotateHolder"]
 position = Vector2(-64.585, 50)
-texture = ExtResource("5_xqirl")
+texture = ExtResource("4_16s7s")
 
 [node name="TopLeft" type="Sprite2D" parent="Visualmap/RotateHolder"]
 position = Vector2(-64.585, -50)
-texture = ExtResource("5_xqirl")
+texture = ExtResource("4_16s7s")
 
 [connection signal="input_event" from="Visualmap/StaticBody2D" to="." method="_on_static_body_2d_input_event"]
 [connection signal="input_event" from="Visualmap/StaticBody2D" to="Visualmap" method="_on_static_body_2d_input_event"]
