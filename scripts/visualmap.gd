@@ -5,6 +5,7 @@ extends Node2D
 @onready var static_body_2d: StaticBody2D = $StaticBody2D
 @onready var visual_selection: TileMapLayer = $VisualSelection
 @onready var rotate_holder: Node2D = $RotateHolder
+@onready var anim: AnimationPlayer = $AnimationPlayer
 
 
 
@@ -28,12 +29,12 @@ func _input(event: InputEvent) -> void:
 				is_rotating = false
 				print(is_rotating)
 				
-		if Input.is_action_just_pressed("rotate_left"):
-			current_rotation = rotate_left()
-		if Input.is_action_just_pressed("rotate_right"):
-			current_rotation =rotate_right()
-		if Input.is_action_just_pressed("ui_accept"):
-			get_parent().apply_rotation(current_rotation)
+		#if Input.is_action_just_pressed("rotate_left"):
+			#current_rotation = rotate_left()
+		#if Input.is_action_just_pressed("rotate_right"):
+			#current_rotation =rotate_right()
+		#if Input.is_action_just_pressed("ui_accept"):
+			#get_parent().apply_rotation(current_rotation)
 
 func _on_static_body_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event is InputEventMouseButton:
@@ -67,7 +68,8 @@ func rotate_right() -> Array:
 	for vector in surrounding_tiles:
 		visual_selection.set_cell(vector,1,Vector2i.ZERO,original_tiles[count])
 		count +=1
-		
+	get_parent().apply_rotation(original_tiles)
+	$AnimationPlayer.play("lower_down")
 	return	original_tiles
 	
 	

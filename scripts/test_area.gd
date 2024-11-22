@@ -30,11 +30,12 @@ func _input(event: InputEvent) -> void:
 	
 	match game_state:
 		game_states.picking:
-			if event is InputEventMouseButton:
+			if event is InputEventMouseButton and !visual.anim.is_playing():
 				if event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed():
-					game_state = game_states.rotating
+					#game_state = game_states.rotating
 					$Visualmap.get_node("AnimationPlayer").play("raise_up")
 					visual_map.show()
+
 					var clicked_tile = map.local_to_map(get_global_mouse_position())
 					selected_tile = clicked_tile
 					visual_map.get_parent().position = map.map_to_local(Vector2(clicked_tile.x,clicked_tile.y))
@@ -184,15 +185,15 @@ func _input(event: InputEvent) -> void:
 							visual.get_node("RotateHolder").get_child(6).rotation = get_character_on_tile(surrounding_tile).rotation
 						else:
 							visual.get_node("RotateHolder").get_child(6).texture = null
-					
-					
+					await get_tree().create_timer(1).timeout
+					visual.rotate_right()
 			
-		game_states.rotating:
-			if event is InputEventMouseButton:
-				if event.button_index == MOUSE_BUTTON_RIGHT and event.is_released():
-					game_state = game_states.picking
-					$Visualmap.get_node("AnimationPlayer").play("lower_down")
-					#visual_map.hide()
+		#game_states.rotating:
+			#if event is InputEventMouseButton:
+				#if event.button_index == MOUSE_BUTTON_RIGHT and event.is_released():
+					#game_state = game_states.picking
+					#$Visualmap.get_node("AnimationPlayer").play("lower_down")
+					##visual_map.hide()
 		
 		
 func apply_rotation(new_tile_array):

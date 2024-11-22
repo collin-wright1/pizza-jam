@@ -216,7 +216,6 @@ shape = SubResource("SegmentShape2D_5pmh6")
 [node name="EnemyHolder" type="Node2D" parent="."]
 
 [node name="Visualmap" type="Node2D" parent="."]
-visible = false
 position = Vector2(-185.415, 0)
 scale = Vector2(1.25, 1.25)
 script = ExtResource("5_ly1wp")
@@ -279,17 +278,39 @@ script = ExtResource("7_i7f5i")
 [node name="ai_turn" type="Node2D" parent="StateMachine"]
 script = ExtResource("8_p8aru")
 
-[node name="Button" type="Button" parent="." node_paths=PackedStringArray("game_state")]
-offset_left = 608.0
-offset_top = 373.0
-offset_right = 768.0
-offset_bottom = 431.0
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Panel" type="Panel" parent="CanvasLayer"]
+offset_top = 578.0
+offset_right = 1149.0
+offset_bottom = 646.0
+
+[node name="SpinsLabel" type="Label" parent="CanvasLayer/Panel"]
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 103.0
+offset_bottom = 43.0
+text = "Spins: 3 / 3"
+
+[node name="Button" type="Button" parent="CanvasLayer/Panel" node_paths=PackedStringArray("game_state")]
+offset_left = 984.0
+offset_top = 6.0
+offset_right = 1144.0
+offset_bottom = 64.0
 text = "End Turn"
 script = ExtResource("7_6wc73")
-game_state = NodePath("../StateMachine")
+game_state = NodePath("../../../StateMachine")
+
+[node name="TurnLabel" type="Label" parent="CanvasLayer/Panel"]
+layout_mode = 0
+offset_left = 884.0
+offset_top = 18.0
+offset_right = 984.0
+offset_bottom = 41.0
+text = "Turn: ???"
 
 [connection signal="input_event" from="Visualmap/StaticBody2D" to="." method="_on_static_body_2d_input_event"]
 [connection signal="input_event" from="Visualmap/StaticBody2D" to="Visualmap" method="_on_static_body_2d_input_event"]
-[connection signal="pressed" from="Button" to="StateMachine" method="_on_button_pressed"]
-[connection signal="pressed" from="Button" to="StateMachine/player_turn" method="_on_button_pressed"]
-[connection signal="pressed" from="Button" to="StateMachine/ai_turn" method="_on_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Panel/Button" to="StateMachine" method="_on_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Panel/Button" to="StateMachine/player_turn" method="_on_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Panel/Button" to="StateMachine/ai_turn" method="_on_button_pressed"]

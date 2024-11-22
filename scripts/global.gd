@@ -1,7 +1,7 @@
 extends Node
 
 
-
+var spins = 0
 
 var characters = []
 
