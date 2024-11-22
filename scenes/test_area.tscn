@@ -1,10 +1,14 @@
-[gd_scene load_steps=18 format=4 uid="uid://b72wqoj6jd72s"]
+[gd_scene load_steps=22 format=4 uid="uid://b72wqoj6jd72s"]
 
 [ext_resource type="Script" path="res://scripts/test_area.gd" id="1_ksqw7"]
 [ext_resource type="Texture2D" uid="uid://cd12eydfhe43q" path="res://sprites/tilemap.png" id="2_o6lid"]
 [ext_resource type="Texture2D" uid="uid://dluke1tljdocb" path="res://sprites/hexagon.png" id="3_wplyi"]
 [ext_resource type="Texture2D" uid="uid://dtqovca3rbpnw" path="res://sprites/mousemagewip.png" id="4_16s7s"]
 [ext_resource type="Script" path="res://scripts/visualmap.gd" id="5_ly1wp"]
+[ext_resource type="Script" path="res://scripts/states/state_machine.gd" id="6_1ewx1"]
+[ext_resource type="Script" path="res://scripts/end_turn_button.gd" id="7_6wc73"]
+[ext_resource type="Script" path="res://scripts/states/player_turn.gd" id="7_i7f5i"]
+[ext_resource type="Script" path="res://scripts/states/ai_turn.gd" id="8_p8aru"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4wao0"]
 texture = ExtResource("2_o6lid")
@@ -265,5 +269,27 @@ texture = ExtResource("4_16s7s")
 position = Vector2(-64.585, -50)
 texture = ExtResource("4_16s7s")
 
+[node name="StateMachine" type="Node2D" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("6_1ewx1")
+initial_state = NodePath("player_turn")
+
+[node name="player_turn" type="Node2D" parent="StateMachine"]
+script = ExtResource("7_i7f5i")
+
+[node name="ai_turn" type="Node2D" parent="StateMachine"]
+script = ExtResource("8_p8aru")
+
+[node name="Button" type="Button" parent="." node_paths=PackedStringArray("game_state")]
+offset_left = 608.0
+offset_top = 373.0
+offset_right = 768.0
+offset_bottom = 431.0
+text = "End Turn"
+script = ExtResource("7_6wc73")
+game_state = NodePath("../StateMachine")
+
 [connection signal="input_event" from="Visualmap/StaticBody2D" to="." method="_on_static_body_2d_input_event"]
 [connection signal="input_event" from="Visualmap/StaticBody2D" to="Visualmap" method="_on_static_body_2d_input_event"]
+[connection signal="pressed" from="Button" to="StateMachine" method="_on_button_pressed"]
+[connection signal="pressed" from="Button" to="StateMachine/player_turn" method="_on_button_pressed"]
+[connection signal="pressed" from="Button" to="StateMachine/ai_turn" method="_on_button_pressed"]
