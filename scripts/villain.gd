@@ -23,7 +23,7 @@ func attack():
 func on_enemy_targeted(body):
 	if body.is_in_group("Hero"):
 		if body.has_method("take_damage"):
-			body.take_damage	
+			body.take_damage
 	
 func death():
 	queue_free()

@@ -38,6 +38,7 @@ func _input(event: InputEvent) -> void:
 
 					var clicked_tile = map.local_to_map(get_global_mouse_position())
 					selected_tile = clicked_tile
+					print(map.map_to_local(clicked_tile))
 					visual_map.get_parent().position = map.map_to_local(Vector2(clicked_tile.x,clicked_tile.y))
 					
 					
@@ -202,13 +203,15 @@ func apply_rotation(new_tile_array):
 	#print(new_tile_array)
 	
 	for i in rotated_characters.size():
-		if rotated_characters[i]!=null:
-			
+		if rotated_characters[i]!=null:			
 			var new_position = $Visualmap/RotateHolder.get_child(i).global_position
-			new_position.x = snapped(new_position.x,25)
-			new_position.y = snapped(new_position.y,25)
-			rotated_characters[i].global_position = new_position
-			rotated_characters[i].global_rotation = $Visualmap/RotateHolder.get_child(i).global_rotation
+			#new_position.x = snapped(new_position.x,15)
+			#new_position.y = snapped(new_position.y,25)
+			rotated_characters[i].global_position = map.map_to_local(map.local_to_map(new_position))
+			rotated_characters[i].global_rotation_degrees = $Visualmap/RotateHolder.get_child(i).global_rotation_degrees
+			rotated_characters[i].rotation_degrees = roundf(snapped(rotated_characters[i].rotation_degrees,60))
+			
+			print(rotated_characters[i].rotation_degrees)
 	if selected_tile.x % 2 == 0:
 		#surrounding_tile = (Vector2i(selected_tile.x,selected_tile.y-1))
 		map.set_cell(Vector2i(selected_tile.x,selected_tile.y-1),2,Vector2i.ZERO,new_tile_array[0])		
