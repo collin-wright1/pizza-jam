@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://dn4174at2ue4k"]
+
+[ext_resource type="PackedScene" uid="uid://c4ythv3xe6dex" path="res://scenes/hero.tscn" id="1_h00bg"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_soty4"]
+radius = 93.3006
+
+[node name="Knight" instance=ExtResource("1_h00bg")]
+
+[node name="DebugLayer" parent="." index="0"]
+visible = false
+
+[node name="Sprite2D" parent="." index="1"]
+rotation = -0.837758
+
+[node name="Area2D2" type="Area2D" parent="AttackHolder" index="0"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackHolder/Area2D2" index="0"]
+shape = SubResource("CircleShape2D_soty4")

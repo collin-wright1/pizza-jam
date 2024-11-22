@@ -23,6 +23,10 @@ Global="*res://scripts/global.gd"
 
 window/stretch/mode="viewport"
 
+[global_group]
+
+Hero="Player controlled mouse"
+
 [input]
 
 rotate_right={
