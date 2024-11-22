@@ -216,7 +216,7 @@ shape = SubResource("SegmentShape2D_5pmh6")
 [node name="EnemyHolder" type="Node2D" parent="."]
 
 [node name="Visualmap" type="Node2D" parent="."]
-position = Vector2(-185.415, 0)
+position = Vector2(-174.535, 0)
 scale = Vector2(1.25, 1.25)
 script = ExtResource("5_ly1wp")
 
@@ -241,31 +241,30 @@ libraries = {
 [node name="RotateHolder" type="Node2D" parent="Visualmap"]
 
 [node name="Center" type="Sprite2D" parent="Visualmap/RotateHolder"]
-position = Vector2(10.415, 0)
 texture = ExtResource("4_16s7s")
 
 [node name="Top" type="Sprite2D" parent="Visualmap/RotateHolder"]
-position = Vector2(10.415, -100)
+position = Vector2(0, -100)
 texture = ExtResource("4_16s7s")
 
 [node name="TopRight" type="Sprite2D" parent="Visualmap/RotateHolder"]
-position = Vector2(85.415, -50)
+position = Vector2(75, -50)
 texture = ExtResource("4_16s7s")
 
 [node name="BottomRight" type="Sprite2D" parent="Visualmap/RotateHolder"]
-position = Vector2(85.415, 50)
+position = Vector2(75, 50)
 texture = ExtResource("4_16s7s")
 
 [node name="Bottom" type="Sprite2D" parent="Visualmap/RotateHolder"]
-position = Vector2(10.415, 100)
+position = Vector2(0, 100)
 texture = ExtResource("4_16s7s")
 
 [node name="BottomLeft" type="Sprite2D" parent="Visualmap/RotateHolder"]
-position = Vector2(-64.585, 50)
+position = Vector2(-75, 50)
 texture = ExtResource("4_16s7s")
 
 [node name="TopLeft" type="Sprite2D" parent="Visualmap/RotateHolder"]
-position = Vector2(-64.585, -50)
+position = Vector2(-75, -50)
 texture = ExtResource("4_16s7s")
 
 [node name="StateMachine" type="Node2D" parent="." node_paths=PackedStringArray("initial_state")]
@@ -286,6 +285,7 @@ offset_right = 1149.0
 offset_bottom = 646.0
 
 [node name="SpinsLabel" type="Label" parent="CanvasLayer/Panel"]
+layout_mode = 0
 offset_left = 20.0
 offset_top = 20.0
 offset_right = 103.0
@@ -293,6 +293,7 @@ offset_bottom = 43.0
 text = "Spins: 3 / 3"
 
 [node name="Button" type="Button" parent="CanvasLayer/Panel" node_paths=PackedStringArray("game_state")]
+layout_mode = 0
 offset_left = 984.0
 offset_top = 6.0
 offset_right = 1144.0

@@ -203,7 +203,11 @@ func apply_rotation(new_tile_array):
 	
 	for i in rotated_characters.size():
 		if rotated_characters[i]!=null:
-			rotated_characters[i].global_position = $Visualmap/RotateHolder.get_child(i).global_position
+			
+			var new_position = $Visualmap/RotateHolder.get_child(i).global_position
+			new_position.x = snapped(new_position.x,25)
+			new_position.y = snapped(new_position.y,25)
+			rotated_characters[i].global_position = new_position
 			rotated_characters[i].global_rotation = $Visualmap/RotateHolder.get_child(i).global_rotation
 	if selected_tile.x % 2 == 0:
 		#surrounding_tile = (Vector2i(selected_tile.x,selected_tile.y-1))

@@ -1,0 +1,209 @@
+[gd_scene load_steps=12 format=3 uid="uid://k2ubnpm24ud"]
+
+[ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_0tv52"]
+[ext_resource type="PackedScene" uid="uid://0xc6hbc6bxub" path="res://sprites/gear.glb" id="1_bggn2"]
+[ext_resource type="Texture2D" uid="uid://c1uyw3xypgog5" path="res://sprites/title.png" id="3_ilcc5"]
+
+[sub_resource type="Gradient" id="Gradient_ghlk3"]
+offsets = PackedFloat32Array(0.227273, 0.993506)
+colors = PackedColorArray(0, 0, 0, 1, 0.808387, 0.469856, 0.118558, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_hyonm"]
+gradient = SubResource("Gradient_ghlk3")
+width = 640
+height = 640
+fill_from = Vector2(0, 1)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_csssx"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_eorxw"]
+sky_material = SubResource("ProceduralSkyMaterial_csssx")
+
+[sub_resource type="Environment" id="Environment_bjjd6"]
+background_mode = 2
+sky = SubResource("Sky_eorxw")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="Animation" id="Animation_60rn0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SubViewportContainer/SubViewport/gear:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SubViewportContainer/SubViewport/gear2:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 1.0472)]
+}
+
+[sub_resource type="Animation" id="Animation_b3hxl"]
+resource_name = "menu"
+length = 1.2
+loop_mode = 1
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SubViewportContainer/SubViewport/gear:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 1.0472), Vector3(0, 0, 2.0944), Vector3(0, 0, 3.14159), Vector3(0, 0, 4.18879), Vector3(0, 0, 5.23599), Vector3(0, 0, 6.28319)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SubViewportContainer/SubViewport/gear2:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector3(0, 0, 7.33038), Vector3(0, 0, 6.28319), Vector3(0, 0, 5.23599), Vector3(0, 0, 4.18879), Vector3(0, 0, 3.14159), Vector3(0, 0, 2.0944), Vector3(0, 0, 1.0472)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rwbk6"]
+_data = {
+"RESET": SubResource("Animation_60rn0"),
+"menu": SubResource("Animation_b3hxl")
+}
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_0tv52")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = SubResource("GradientTexture2D_hyonm")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+layout_mode = 0
+offset_left = 216.0
+offset_top = -66.0
+offset_right = 1083.0
+offset_bottom = 407.0
+rotation = 0.685914
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(867, 473)
+render_target_update_mode = 4
+
+[node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.855, 0.11, 4.875)
+
+[node name="gear" parent="SubViewportContainer/SubViewport" instance=ExtResource("1_bggn2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.91857, 0, 0)
+
+[node name="gear2" parent="SubViewportContainer/SubViewport" instance=ExtResource("1_bggn2")]
+transform = Transform3D(0.292499, -0.506626, 0, 0.506626, 0.292499, 0, 0, 0, 0.585, 0.802871, 0, 0.0431409)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="SubViewportContainer/SubViewport"]
+environment = SubResource("Environment_bjjd6")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(0.900638, -0.099973, 0.422915, 0.272664, 0.887785, -0.370801, -0.338387, 0.449271, 0.826831, 0, 0, 3.59201)
+visible = false
+shadow_enabled = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_rwbk6")
+}
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -13.0
+offset_top = -210.0
+offset_right = 476.0
+offset_bottom = -32.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="TextureRect" parent="Panel"]
+layout_mode = 0
+offset_right = 746.0
+offset_bottom = 255.0
+scale = Vector2(0.655, 0.655)
+texture = ExtResource("3_ilcc5")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 137.0
+offset_top = 11.0
+offset_right = 319.0
+offset_bottom = 56.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Play"
+
+[node name="Button2" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 137.0
+offset_top = 70.0
+offset_right = 319.0
+offset_bottom = 115.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Instructions"
+
+[node name="Button3" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 137.0
+offset_top = 132.0
+offset_right = 319.0
+offset_bottom = 177.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Options?"
