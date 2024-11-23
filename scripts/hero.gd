@@ -6,6 +6,10 @@ extends CharacterBody2D
 @export var speed = 0
 @export var movement_speed = 2
 
+
+var can_attack : bool = false
+var attack_targets = []
+
 @onready var attack_holder: Node2D = $AttackHolder
 
 var rotation_amounts = [0,57,123,180,237,303]
@@ -14,8 +18,9 @@ var move_cooldown : bool = true
 
 func _ready() -> void:
 	for hitbox in attack_holder.get_children():
-		if hitbox is Area3D:
-			hitbox.body_entered.connect("on_enemy_targeted")
+		if hitbox is Area2D:
+			hitbox.body_entered.connect(on_enemy_targeted)
+			hitbox.body_exited.connect(on_enemy_left)
 
 func _process(delta: float) -> void:
 	if(move_cooldown == false):
@@ -43,15 +48,25 @@ func _input(event: InputEvent) -> void:
 			pass
 
 func attack():
-	for hitbox in attack_holder.get_children():
-		if hitbox is Area3D:
-			var hitbox_instance = hitbox as Area3D
-			hitbox_instance.monitoring = false
+	for enemy in attack_targets:
+		if enemy.has_method("take_damage") and enemy.is_in_group("Enemy"):
+			enemy.take_damage(attack_power)
 
 func on_enemy_targeted(body):
-	if body.is_in_group("Enemy"):
-		if body.has_method("take_damage"):
-			body.take_damage
+	
+	attack_targets.append(body)
+	
+	
+	#print("entity seen")
+	#if body.is_in_group("Enemy"):
+		#if body.has_method("take_damage"):
+			#body.take_damage(attack_power)
+	##await get_tree().create_timer(1).timeout
+	#for hitbox in attack_holder.get_children():
+		#if hitbox is Area3D:
+			#hitbox.monitoring = false
+func on_enemy_left(body):
+	attack_targets.pop_at(attack_targets.find(body))
 			
 func take_damage(damage):
 	health -= damage

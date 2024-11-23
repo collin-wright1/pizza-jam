@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://cfd4c7h2nvysh"]
+
+[ext_resource type="Script" path="res://scripts/training_dummy.gd" id="1_tqdqv"]
+
+[sub_resource type="Gradient" id="Gradient_6r4yi"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_5rdfk"]
+gradient = SubResource("Gradient_6r4yi")
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_72dp4"]
+radius = 28.8617
+
+[node name="Training Dummy" type="CharacterBody2D" groups=["Enemy"]]
+script = ExtResource("1_tqdqv")
+
+[node name="Sprite2D" type="TextureRect" parent="."]
+offset_left = -33.0
+offset_top = -33.0
+offset_right = 31.0
+offset_bottom = 31.0
+texture = SubResource("GradientTexture2D_5rdfk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_72dp4")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -5.0
+offset_top = -54.0
+offset_right = 13.0
+offset_bottom = -31.0
+text = "2"
