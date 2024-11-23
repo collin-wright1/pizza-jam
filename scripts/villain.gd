@@ -7,7 +7,7 @@ extends CharacterBody2D
 @export var movement_speed = 2
 
 @onready var attack_holder: Node2D = $AttackHolder
-
+const DAMAGE_NUMBER = preload("res://scenes/damage_number.tscn")
 var rotation_amounts = [0,57,123,180,237,303]
 var destination : Vector2 = position
 var move_cooldown : bool = true
@@ -57,6 +57,8 @@ func on_enemy_targeted(body):
 			
 func take_damage(damage):
 	health -= damage
+	var dam_num_instance = DAMAGE_NUMBER.instantiate()
+	add_child(dam_num_instance)
 	if health <=0:
 		death()
 		

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=4 uid="uid://bx8qtplmisffv"]
+[gd_scene load_steps=7 format=4 uid="uid://dwo373kpn6los"]
 
 [ext_resource type="Texture2D" uid="uid://j4j7pgs258s6" path="res://sprites/mouseknight.png" id="1_5yg0t"]
 [ext_resource type="Script" path="res://scripts/villain.gd" id="1_gdtyu"]

@@ -84,7 +84,7 @@ func _input(event: InputEvent) -> void:
 						#br
 						surrounding_tile=(Vector2i(clicked_tile.x+1,clicked_tile.y))
 						rotated_characters.append(get_character_on_tile(surrounding_tile))
-						visual_map.set_cell(surrounding_tile-clicked_tile,1,map.get_cell_atlas_coords(surrounding_tile),map.get_cell_alternative_tile(surrounding_tile))	
+						visual_map.set_cell(surrounding_tile-clicked_tile,map.get_cell_source_id(surrounding_tile),map.get_cell_atlas_coords(surrounding_tile),map.get_cell_alternative_tile(surrounding_tile))	
 						if get_character_on_tile(surrounding_tile) != null:	
 							visual.get_node("RotateHolder").get_child(3).texture = get_character_on_tile(surrounding_tile).get_node("Sprite2D").texture
 							visual.get_node("RotateHolder").get_child(3).rotation = get_character_on_tile(surrounding_tile).rotation

@@ -6,7 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://dtqovca3rbpnw" path="res://sprites/mousemagewip.png" id="4_16s7s"]
 [ext_resource type="PackedScene" uid="uid://dn4174at2ue4k" path="res://scenes/Heroes/Knight.tscn" id="4_hydyf"]
 [ext_resource type="Script" path="res://scripts/visualmap.gd" id="5_ly1wp"]
-[ext_resource type="PackedScene" uid="uid://bx8qtplmisffv" path="res://scenes/villain.tscn" id="5_v8num"]
 [ext_resource type="Script" path="res://scripts/end_turn_button.gd" id="7_6wc73"]
 [ext_resource type="PackedScene" uid="uid://cfd4c7h2nvysh" path="res://scenes/training_dummy.tscn" id="8_7ho47"]
 
@@ -179,10 +178,6 @@ zoom = Vector2(0.75, 0.75)
 
 [node name="Knight" parent="HeroHolder" instance=ExtResource("4_hydyf")]
 position = Vector2(-23, 1)
-
-[node name="HeroGreen" parent="HeroHolder" instance=ExtResource("4_i3svv")]
-modulate = Color(0, 0.886275, 0, 1)
-position = Vector2(349, 154)
 
 [node name="EnemyHolder" type="Node2D" parent="."]
 

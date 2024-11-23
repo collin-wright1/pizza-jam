@@ -8,7 +8,7 @@ var characters = []
 
 var characters_have_moved = true
 var characters_have_attacked = false
-
+var all_have_moved
 #var game_state: State
 @onready var button: Button = $TestArea/CanvasLayer/Panel/Button
 
@@ -36,28 +36,28 @@ func _process(delta: float) -> void:
 					if unit.has_method("move_forward"):
 						unit.move_forward()
 				characters_have_moved = true
-				#var all_have_moved = true
-				#for char in characters:
-					#if char.move_cooldown == false:
-						#all_have_moved = false
-						#break
-				#if all_have_moved:		
+			all_have_moved = true
+			for char in characters:
+				if char.move_cooldown == false:
+					all_have_moved = false
+					break
+				all_have_moved = true	
 					
 			
 			#TODO enemy move?
 			
 			#TODO Hero/Enemy Attack Phase
-			if characters_have_attacked == false and characters_have_moved == true:
+			if characters_have_attacked == false and all_have_moved == true:
 				clean_characters()
 				for char in characters:
 					if char.has_method("attack"):
 						char.attack()
 					characters_have_attacked = true
-			
-			await get_tree().create_timer(1).timeout
-			spins = 4
-			decrement_spin()
-			current_game_state = game_states.player_turn
+			if characters_have_attacked and all_have_moved:
+				#await get_tree().create_timer(1).timeout
+				spins = 4
+				decrement_spin()
+				current_game_state = game_states.player_turn
 			
 			
 			
