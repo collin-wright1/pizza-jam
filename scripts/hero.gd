@@ -68,7 +68,7 @@ func move_forward():
 			destination = Vector2(position.x - 75, position.y + 50)
 		elif(snapped(rotation_degrees, 60) == 120):
 			destination = Vector2(position.x - 75, position.y - 50)
-		elif(snapped(rotation_degrees, 60) == -180):
+		elif(snapped(rotation_degrees, 60) == 180):
 			destination = Vector2(position.x, position.y - 100)
 		elif(snapped(rotation_degrees, 60) == -120):
 			destination = Vector2(position.x + 75, position.y - 50)
