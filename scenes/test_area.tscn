@@ -1,7 +1,7 @@
 [gd_scene load_steps=23 format=4 uid="uid://b72wqoj6jd72s"]
 
 [ext_resource type="Script" path="res://scripts/test_area.gd" id="1_ksqw7"]
-[ext_resource type="Texture2D" uid="uid://cd12eydfhe43q" path="res://sprites/tilemap.png" id="2_o6lid"]
+[ext_resource type="Texture2D" uid="uid://swgnuwd8ie1y" path="res://sprites/hexes.png" id="2_kp7va"]
 [ext_resource type="Texture2D" uid="uid://dluke1tljdocb" path="res://sprites/hexagon.png" id="3_wplyi"]
 [ext_resource type="Script" path="res://scripts/camera_controller.gd" id="4_1nbqs"]
 [ext_resource type="Texture2D" uid="uid://dtqovca3rbpnw" path="res://sprites/mousemagewip.png" id="4_16s7s"]
@@ -11,30 +11,15 @@
 [ext_resource type="Script" path="res://scripts/states/player_turn.gd" id="7_i7f5i"]
 [ext_resource type="Script" path="res://scripts/states/ai_turn.gd" id="8_p8aru"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4wao0"]
-texture = ExtResource("2_o6lid")
-margins = Vector2i(0, 4)
-texture_region_size = Vector2i(56, 48)
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ixb2q"]
+texture = ExtResource("2_kp7va")
+texture_region_size = Vector2i(100, 100)
+0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
 3:0/0 = 0
 4:0/0 = 0
 5:0/0 = 0
-0:1/0 = 0
-1:1/0 = 0
-2:1/0 = 0
-3:1/0 = 0
-4:1/0 = 0
-5:1/0 = 0
-0:2/0 = 0
-1:2/0 = 0
-2:2/0 = 0
-3:2/0 = 0
-0:3/0 = 0
-1:3/0 = 0
-2:3/0 = 0
-3:3/0 = 0
-0:0/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5wxjy"]
 texture = ExtResource("3_wplyi")
@@ -61,28 +46,21 @@ texture_region_size = Vector2i(100, 100)
 tile_shape = 3
 tile_offset_axis = 1
 tile_size = Vector2i(100, 100)
-sources/1 = SubResource("TileSetAtlasSource_4wao0")
 sources/2 = SubResource("TileSetAtlasSource_5wxjy")
+sources/0 = SubResource("TileSetAtlasSource_ixb2q")
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_5pmh6"]
 b = Vector2(0, 300)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_blh00"]
-texture = ExtResource("2_o6lid")
-margins = Vector2i(0, 4)
-texture_region_size = Vector2i(56, 48)
-0:0/next_alternative_id = 3
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7p6gv"]
+texture = ExtResource("2_kp7va")
+texture_region_size = Vector2i(100, 100)
 0:0/0 = 0
-0:0/1 = 1
-0:0/1/modulate = Color(0.47653, 0, 0.220696, 1)
-0:0/2 = 2
 1:0/0 = 0
 2:0/0 = 0
 3:0/0 = 0
-0:1/0 = 0
-1:1/0 = 0
-2:1/0 = 0
-3:1/0 = 0
+4:0/0 = 0
+5:0/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3mddg"]
 texture = ExtResource("3_wplyi")
@@ -109,8 +87,8 @@ texture_region_size = Vector2i(100, 100)
 tile_shape = 3
 tile_offset_axis = 1
 tile_size = Vector2i(100, 100)
-sources/0 = SubResource("TileSetAtlasSource_blh00")
-sources/1 = SubResource("TileSetAtlasSource_3mddg")
+sources/0 = SubResource("TileSetAtlasSource_7p6gv")
+sources/2 = SubResource("TileSetAtlasSource_3mddg")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qhtdw"]
 radius = 126.695
@@ -195,7 +173,7 @@ _data = {
 script = ExtResource("1_ksqw7")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
-tile_map_data = PackedByteArray("AAABAAAAAgAAAAAAAwAAAAEAAgAAAAAABAD//wAAAgAAAAAABQD/////AgAAAAAABgAAAP//AgAAAAAAAQABAAEAAgAAAAAAAQACAAAAAgAAAAAABgACAP//AgAAAAAAAAADAP//AgAAAAAAAQAEAAAAAgAAAAAAAgAEAAEAAgAAAAAAAwADAAEAAgAAAAAABAADAAAAAgAAAAAAAAACAAIAAgAAAAAAAgADAAIAAgAAAAAAAQAEAAIAAgAAAAAAAgAFAAEAAgAAAAAAAgAGAAEAAgAAAAAAAAAHAAAAAgAAAAAAAAAGAAAAAgAAAAAAAAAHAP//AgAAAAAAAAAGAP//AgAAAAAAAAAFAP//AgAAAAAAAgAFAAIAAgAAAAAAAAAGAAIAAgAAAAAAAAAHAAEAAgAAAAAAAAAIAAEAAgAAAAAAAAAIAAAAAgAAAAAAAAAIAP//AgAAAAAAAAAHAP7/AgAAAAAAAAAFAAAAAgAAAAAAAwAGAP7/AgAAAAAAAAAFAP3/AgAAAAAAAAAEAP7/AgAAAAAAAAADAP7/AgAAAAAAAAAFAP7/AgAAAAAAAAAEAP//AgAAAAAAAQACAP7/AgAAAAAAAAABAP7/AgAAAAAAAAACAAEAAgAAAAAABQD+/wIAAgAAAAAAAAD//wIAAgAAAAAAAAD//wEAAgAAAAAAAAAAAAIAAgAAAAAAAgABAAIAAgAAAAAAAQABAAMAAgAAAAAAAAAAAAMAAgAAAAAAAAACAAMAAgAAAAAAAQADAAMAAgAAAAAAAAAEAAMAAgAAAAAAAAACAAQAAgAAAAAAAAAHAP3/AgAAAAAAAAAJAP//AgAAAAAAAAABAP//AgAAAAAAAgAAAAAAAgAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAABAAAAAgAAAAAAAwAAAAEAAgAAAAAABAD//wAAAgAAAAAABQD/////AgAAAAAABgAAAP//AgAAAAAAAQABAAEAAgAAAAAAAQACAAAAAgAAAAAABgACAP//AgAAAAAAAAADAP//AgAAAAAAAQAEAAAAAgAAAAAAAgAEAAEAAgAAAAAAAwADAAEAAgAAAAAABAADAAAAAgAAAAAAAAACAAIAAgAAAAAAAgADAAIAAgAAAAAAAQAEAAIAAgAAAAAAAgAFAAEAAgAAAAAAAgAGAAEAAgAAAAAAAAAHAAAAAgAAAAAAAAAGAAAAAgAAAAAAAAAHAP//AgAAAAAAAAAGAP//AgAAAAAAAAAFAP//AgAAAAAAAgAFAAIAAgAAAAAAAAAGAAIAAgAAAAAAAAAHAAEAAgAAAAAAAAAIAAEAAgAAAAAAAAAIAAAAAgAAAAAAAAAIAP//AgAAAAAAAAAHAP7/AgAAAAAAAAAFAAAAAgAAAAAAAwAGAP7/AgAAAAAAAAAFAP3/AgAAAAAAAAAEAP7/AgAAAAAAAAADAP7/AgAAAAAAAAAFAP7/AgAAAAAAAAAEAP//AgAAAAAAAQACAP7/AgAAAAAAAAABAP7/AgAAAAAAAAACAAEAAgAAAAAABQD+/wIAAgAAAAAAAAD//wIAAgAAAAAAAAD//wEAAgAAAAAAAAAAAAIAAgAAAAAAAgABAAIAAgAAAAAAAQABAAMAAgAAAAAAAAAAAAMAAgAAAAAAAAACAAMAAgAAAAAAAQADAAMAAgAAAAAAAAAEAAMAAgAAAAAAAAACAAQAAgAAAAAAAAAHAP3/AgAAAAAAAAAJAP//AgAAAAAAAAABAP//AgAAAAAAAgAAAAAAAgAAAAAAAAADAP3/AAAEAAAAAAA=")
 tile_set = SubResource("TileSet_8g7c7")
 
 [node name="Camera2D" type="Camera2D" parent="."]
