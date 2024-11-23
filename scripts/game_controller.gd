@@ -6,6 +6,8 @@ var spins = 3
 
 var characters = []
 
+var characters_have_moved = true
+
 #var game_state: State
 @onready var button: Button = $TestArea/CanvasLayer/Panel/Button
 
@@ -25,19 +27,17 @@ func _process(delta: float) -> void:
 			else:
 				button.disabled = true
 			
-			
-			
 		game_states.ai_turn:
 			print("Ai turn")
 			
-			
-			for unit in characters:
-				unit.move_forward()
+			if(characters_have_moved == false):
+				for unit in characters:
+					unit.move_forward()
+				characters_have_moved = true
 			
 			#TODO enemy move?
 			
 			#TODO Hero/Enemy Attack Phase
-			
 			
 			await get_tree().create_timer(1).timeout
 			spins = 4
@@ -57,4 +57,6 @@ func decrement_spin():
 
 
 func _on_button_pressed() -> void:
+	characters_have_moved = false
 	current_game_state = game_states.ai_turn
+	button.disabled = true

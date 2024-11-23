@@ -59,7 +59,7 @@ func take_damage(damage):
 		death()
 		
 func move_forward():
-	#print(position, destination)
+	print(position, destination)
 	if(move_cooldown == true):
 		print(snapped(rotation_degrees, 60))
 		if(snapped(rotation_degrees, 60) == 0):

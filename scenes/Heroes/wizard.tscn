@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://dwmsdjktd4bwe"]
 
-[ext_resource type="PackedScene" uid="uid://c4ythv3xe6dex" path="res://scenes/hero.tscn" id="1_fn2y4"]
+[ext_resource type="PackedScene" uid="uid://dt8byfomssxpy" path="res://scenes/hero.tscn" id="1_fn2y4"]
 [ext_resource type="Texture2D" uid="uid://dtqovca3rbpnw" path="res://sprites/mousemagewip.png" id="2_me1le"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gyoc0"]

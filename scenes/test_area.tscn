@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://swgnuwd8ie1y" path="res://sprites/hexes.png" id="2_kp7va"]
 [ext_resource type="Texture2D" uid="uid://dluke1tljdocb" path="res://sprites/hexagon.png" id="3_wplyi"]
 [ext_resource type="Texture2D" uid="uid://dtqovca3rbpnw" path="res://sprites/mousemagewip.png" id="4_16s7s"]
-[ext_resource type="PackedScene" uid="uid://c4ythv3xe6dex" path="res://scenes/hero.tscn" id="4_i3svv"]
+[ext_resource type="PackedScene" uid="uid://dt8byfomssxpy" path="res://scenes/hero.tscn" id="4_i3svv"]
 [ext_resource type="Script" path="res://scripts/visualmap.gd" id="5_ly1wp"]
 [ext_resource type="Script" path="res://scripts/end_turn_button.gd" id="7_6wc73"]
 
@@ -246,7 +246,7 @@ offset_right = 103.0
 offset_bottom = 43.0
 text = "Spins: 3 / 3"
 
-[node name="Button" type="Button" parent="CanvasLayer/Panel" node_paths=PackedStringArray("game_state")]
+[node name="Button" type="Button" parent="CanvasLayer/Panel"]
 layout_mode = 0
 offset_left = 984.0
 offset_top = 6.0
@@ -254,7 +254,6 @@ offset_right = 1144.0
 offset_bottom = 64.0
 text = "End Turn"
 script = ExtResource("7_6wc73")
-game_state = NodePath("")
 
 [node name="TurnLabel" type="Label" parent="CanvasLayer/Panel"]
 layout_mode = 0
