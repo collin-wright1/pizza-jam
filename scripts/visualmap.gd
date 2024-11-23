@@ -66,7 +66,7 @@ func rotate_right() -> Array:
 	original_tiles.push_front(original_tiles.pop_at(-1))
 	var count = 0
 	for vector in surrounding_tiles:
-		visual_selection.set_cell(vector,0,original_tiles[count],0)
+		visual_selection.set_cell(vector,1,original_tiles[count],0)
 		count +=1
 	get_parent().apply_rotation(original_tiles)
 	$AnimationPlayer.play("lower_down")

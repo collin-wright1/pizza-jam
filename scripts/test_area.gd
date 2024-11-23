@@ -215,46 +215,47 @@ func apply_rotation(new_tile_array):
 			#print(rotated_characters[i].rotation_degrees)
 	if selected_tile.x % 2 == 0:
 		#surrounding_tile = (Vector2i(selected_tile.x,selected_tile.y-1))
-		map.set_cell(Vector2i(selected_tile.x,selected_tile.y-1),0,new_tile_array[0],0)		
+		map.set_cell(Vector2i(selected_tile.x,selected_tile.y-1),1,new_tile_array[0],0)		
 		#tr
 		#surrounding_tile=(Vector2i(clicked_tile.x+1,clicked_tile.y-1))
-		map.set_cell(Vector2i(selected_tile.x+1,selected_tile.y-1),0,new_tile_array[1],0)	
+		map.set_cell(Vector2i(selected_tile.x+1,selected_tile.y-1),1,new_tile_array[1],0)	
 		#br
 		#surrounding_tile=(Vector2i(clicked_tile.x+1,clicked_tile.y))
-		map.set_cell(Vector2i(selected_tile.x+1,selected_tile.y),0,new_tile_array[2],0)	
+		map.set_cell(Vector2i(selected_tile.x+1,selected_tile.y),1,new_tile_array[2],0)	
 		#b
 		#surrounding_tile=(Vector2i(clicked_tile.x,clicked_tile.y+1))
-		map.set_cell(Vector2i(selected_tile.x,selected_tile.y+1),0,new_tile_array[3],0)		#bl
+		map.set_cell(Vector2i(selected_tile.x,selected_tile.y+1),1,new_tile_array[3],0)		#bl
 		#surrounding_tile=(Vector2i(clicked_tile.x-1,clicked_tile.y))
-		map.set_cell(Vector2i(selected_tile.x-1,selected_tile.y),0,new_tile_array[4],0)	
+		map.set_cell(Vector2i(selected_tile.x-1,selected_tile.y),1,new_tile_array[4],0)	
 		#tl
 		#surrounding_tile=(Vector2i(clicked_tile.x-1,clicked_tile.y-1))
-		map.set_cell(Vector2i(selected_tile.x-1,selected_tile.y-1),0,new_tile_array[5],0)	
+		map.set_cell(Vector2i(selected_tile.x-1,selected_tile.y-1),1,new_tile_array[5],0)	
 	else:
 		#t
 		#surrounding_tile = (Vector2i(clicked_tile.x,clicked_tile.y-1))
-		map.set_cell(Vector2i(selected_tile.x,selected_tile.y-1),0,new_tile_array[0],0)	
+		map.set_cell(Vector2i(selected_tile.x,selected_tile.y-1),1,new_tile_array[0],0)	
 		#tr
 		#surrounding_tile=(Vector2i(clicked_tile.x+1,clicked_tile.y))
-		map.set_cell(Vector2i(selected_tile.x+1,selected_tile.y),0,new_tile_array[1],0)
+		map.set_cell(Vector2i(selected_tile.x+1,selected_tile.y),1,new_tile_array[1],0)
 		#br
 		#surrounding_tile=(Vector2i(clicked_tile.x+1,clicked_tile.y+1))
-		map.set_cell(Vector2i(selected_tile.x+1,selected_tile.y+1),0,new_tile_array[2],0)	
+		map.set_cell(Vector2i(selected_tile.x+1,selected_tile.y+1),1,new_tile_array[2],0)	
 		#b
 		#surrounding_tile=(Vector2i(clicked_tile.x,clicked_tile.y+1))
-		map.set_cell(Vector2i(selected_tile.x,selected_tile.y+1),0,new_tile_array[3],0)
+		map.set_cell(Vector2i(selected_tile.x,selected_tile.y+1),1,new_tile_array[3],0)
 		#bl
 		#surrounding_tile=(Vector2i(clicked_tile.x-1,clicked_tile.y+1))
-		map.set_cell(Vector2i(selected_tile.x-1,selected_tile.y+1),0,new_tile_array[4],0)	
+		map.set_cell(Vector2i(selected_tile.x-1,selected_tile.y+1),1,new_tile_array[4],0)	
 		#tl
 		#surrounding_tile=(Vector2i(clicked_tile.x-1,clicked_tile.y))
-		map.set_cell(Vector2i(selected_tile.x-1,selected_tile.y),0,new_tile_array[5],0)	
+		map.set_cell(Vector2i(selected_tile.x-1,selected_tile.y),1,new_tile_array[5],0)	
 		
 			
 			
 
 
 func get_character_on_tile(tile_coord):
+	get_parent().clean_characters()
 	for character in get_parent().characters:
 		if map.local_to_map(character.global_position) == tile_coord:
 			#print(character)

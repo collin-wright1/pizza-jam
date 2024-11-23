@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dtqovca3rbpnw" path="res://sprites/mousemagewip.png" id="2_me1le"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gyoc0"]
-size = Vector2(20, 96)
+size = Vector2(20, 100)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5rorm"]
 radius = 46.9918
@@ -12,21 +12,26 @@ height = 177.066
 
 [node name="Wizard" instance=ExtResource("1_fn2y4")]
 
-[node name="MoveShower#Polygon2D" type="Polygon2D" parent="." index="0"]
-color = Color(0.893685, 0, 0.166107, 1)
-polygon = PackedVector2Array(-8, 74, -9, 200, -67, 244, -80, 229, -91, 264, -54, 259, -61, 251, -9, 216, -12, 306, -27, 307, -8, 327, 13, 306, 0, 306, 2, 217, 71, 257, 62, 274, 90, 263, 82, 235, 75, 248, 3, 200, 2, 73)
+[node name="DebugLayer" parent="." index="0"]
+visible = true
 
-[node name="Sprite2D" parent="." index="2"]
+[node name="Sprite2D" parent="." index="1"]
 rotation = 0.0
 texture = ExtResource("2_me1le")
 
 [node name="Area2D" type="Area2D" parent="AttackHolder" index="0"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackHolder/Area2D" index="0"]
-position = Vector2(0, 116)
+position = Vector2(0, 112)
 shape = SubResource("RectangleShape2D_gyoc0")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="AttackHolder/Area2D" index="1"]
-position = Vector2(-2, 249)
+position = Vector2(-2, 224)
 rotation = 1.56374
 shape = SubResource("CapsuleShape2D_5rorm")
+
+[node name="Polygon2D" type="Polygon2D" parent="AttackShower" index="0"]
+position = Vector2(3.50293, 0)
+scale = Vector2(1.00585, 1)
+color = Color(3.22476e-06, 0.735401, 0.240407, 1)
+polygon = PackedVector2Array(-8, 73, -8, 200, -68, 219, -75, 206, -86, 234, -57, 241, -63, 230, -9, 216, -7, 244, -19, 245, -1, 273, 12, 244, 2, 244, 2, 217, 64, 232, 63, 240, 85, 229, 68, 212, 66, 221, 3, 200, 2, 73)

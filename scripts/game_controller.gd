@@ -46,7 +46,7 @@ func _process(delta: float) -> void:
 			
 			#TODO enemy move?
 			
-			#TODO Hero/Enemy Attack Phase
+			#TODO Enemy Attack Phase
 			if characters_have_attacked == false and all_have_moved == true:
 				clean_characters()
 				for char in characters:
@@ -69,6 +69,16 @@ func decrement_spin():
 	spins -= 1
 	$TestArea/CanvasLayer/Panel/SpinsLabel.text = str(spins)
 	
+func _input(event: InputEvent) -> void:
+	if Input.is_action_just_pressed("show_moves"):
+		for char in characters:
+			if char.get_node_or_null("AttackShower"):
+				char.get_node_or_null("AttackShower").show()
+	if Input.is_action_just_released("show_moves"):
+		for char in characters:
+			if char.get_node_or_null("AttackShower"):
+				char.get_node_or_null("AttackShower").hide()
+
 
 
 func _on_button_pressed() -> void:

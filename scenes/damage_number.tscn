@@ -71,9 +71,9 @@ _data = {
 }
 
 [node name="DamageNumber" type="Label"]
-offset_top = 10.0
+texture_filter = 1
 offset_right = 15.0
-offset_bottom = 33.0
+offset_bottom = 23.0
 text = "-1"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

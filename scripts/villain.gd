@@ -5,6 +5,7 @@ extends CharacterBody2D
 @export var attack_power = 1
 @export var speed = 0
 @export var movement_speed = 2
+@onready var move_checker: RayCast2D = $MoveChecker
 
 @onready var attack_holder: Node2D = $AttackHolder
 const DAMAGE_NUMBER = preload("res://scenes/damage_number.tscn")
@@ -63,8 +64,8 @@ func take_damage(damage):
 		death()
 		
 func move_forward():
-	print(position, destination)
-	if(move_cooldown == true):
+	#print(position, destination)
+	if(move_cooldown == true and !move_checker.is_colliding()):
 		print(snapped(rotation_degrees, 60))
 		if(snapped(rotation_degrees, 60) == 0):
 			destination = Vector2(position.x, position.y + 100)

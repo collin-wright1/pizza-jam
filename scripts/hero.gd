@@ -5,6 +5,9 @@ extends CharacterBody2D
 @export var attack_power = 1
 @export var speed = 0
 @export var movement_speed = 2
+@onready var move_checker: RayCast2D = $MoveChecker
+
+
 
 
 var can_attack : bool = false
@@ -43,7 +46,8 @@ func _process(delta: float) -> void:
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey:
 		if event.pressed and event.keycode == KEY_SPACE:
-			move_forward()
+			pass
+			#move_forward()
 		else:
 			pass
 
@@ -78,8 +82,8 @@ func take_damage(damage):
 		death()
 		
 func move_forward():
-	print(position, destination)
-	if(move_cooldown == true):
+	#print(position, destination)
+	if(move_cooldown == true and !move_checker.is_colliding()):
 		print(snapped(rotation_degrees, 60))
 		if(snapped(rotation_degrees, 60) == 0):
 			destination = Vector2(position.x, position.y + 100)
