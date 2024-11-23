@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://by4174pqnrkcd"]
+
+[ext_resource type="Script" path="res://scripts/game_controller.gd" id="1_myg7p"]
+[ext_resource type="PackedScene" uid="uid://b72wqoj6jd72s" path="res://scenes/test_area.tscn" id="2_32ljh"]
+
+[node name="GameController" type="Node2D"]
+script = ExtResource("1_myg7p")
+
+[node name="TestArea" parent="." instance=ExtResource("2_32ljh")]
+
+[connection signal="pressed" from="TestArea/CanvasLayer/Panel/Button" to="." method="_on_button_pressed"]
+
+[editable path="TestArea"]

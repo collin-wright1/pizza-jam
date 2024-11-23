@@ -14,7 +14,7 @@ func _ready():
 	if initial_state:
 		initial_state.Enter()
 		current_state = initial_state
-		Global.game_state = initial_state
+		#get_p.game_state = initial_state
 			
 func _process(delta):
 	if current_state:

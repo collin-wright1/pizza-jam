@@ -19,9 +19,9 @@ var game_state = game_states.picking
 
 func _ready() -> void:
 	for hero in hero_holder.get_children():
-		Global.characters.append(hero)
+		get_parent().characters.append(hero)
 	for enemy in enemy_holder.get_children():
-		Global.characters.append(enemy)
+		get_parent().characters.append(enemy)
 
 func _physics_process(delta: float) -> void:
 	pass
@@ -30,8 +30,9 @@ func _input(event: InputEvent) -> void:
 	
 	match game_state:
 		game_states.picking:
-			if event is InputEventMouseButton and !visual.anim.is_playing():
+			if event is InputEventMouseButton and !visual.anim.is_playing() and get_parent().spins > 0:
 				if event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed():
+					get_parent().decrement_spin()
 					#game_state = game_states.rotating
 					$Visualmap.get_node("AnimationPlayer").play("raise_up")
 					visual_map.show()
@@ -254,7 +255,7 @@ func apply_rotation(new_tile_array):
 
 
 func get_character_on_tile(tile_coord):
-	for character in Global.characters:
+	for character in get_parent().characters:
 		if map.local_to_map(character.global_position) == tile_coord:
 			#print(character)
 			return character
