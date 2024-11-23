@@ -62,11 +62,11 @@ func rotate_right() -> Array:
 	var surrounding_tiles = [Vector2i(0,-1),Vector2i(1,-1),Vector2i(1,0),Vector2i(0,1),Vector2i(-1,0),Vector2i(-1,-1)]
 	var original_tiles = []
 	for vector in surrounding_tiles:
-		original_tiles.append(visual_selection.get_cell_alternative_tile(vector))
+		original_tiles.append(visual_selection.get_cell_atlas_coords(vector))
 	original_tiles.push_front(original_tiles.pop_at(-1))
 	var count = 0
 	for vector in surrounding_tiles:
-		visual_selection.set_cell(vector,1,Vector2i.ZERO,original_tiles[count])
+		visual_selection.set_cell(vector,0,original_tiles[count],0)
 		count +=1
 	get_parent().apply_rotation(original_tiles)
 	$AnimationPlayer.play("lower_down")

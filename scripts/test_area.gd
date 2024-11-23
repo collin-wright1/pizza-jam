@@ -55,7 +55,7 @@ func _input(event: InputEvent) -> void:
 						
 						visual_map.clear()
 						#center
-						visual_map.set_cell(Vector2i.ZERO,1,Vector2i.ZERO,map.get_cell_alternative_tile(clicked_tile))
+						visual_map.set_cell(Vector2i.ZERO,map.get_cell_source_id(clicked_tile),map.get_cell_atlas_coords(clicked_tile),map.get_cell_alternative_tile(clicked_tile))
 						rotated_characters.append(get_character_on_tile(clicked_tile))
 						if get_character_on_tile(clicked_tile) != null:
 							visual.get_node("RotateHolder").get_child(0).texture = get_character_on_tile(clicked_tile).get_node_or_null("Sprite2D").texture
@@ -65,7 +65,7 @@ func _input(event: InputEvent) -> void:
 						#t
 						surrounding_tile = (Vector2i(clicked_tile.x,clicked_tile.y-1))
 						rotated_characters.append(get_character_on_tile(surrounding_tile))
-						visual_map.set_cell(surrounding_tile - clicked_tile,1,Vector2i.ZERO,map.get_cell_alternative_tile(surrounding_tile))
+						visual_map.set_cell(surrounding_tile - clicked_tile,map.get_cell_source_id(surrounding_tile),map.get_cell_atlas_coords(surrounding_tile),map.get_cell_alternative_tile(surrounding_tile))
 						if get_character_on_tile(surrounding_tile) != null:
 							visual.get_node("RotateHolder").get_child(1).texture = get_character_on_tile(surrounding_tile).get_node("Sprite2D").texture
 							visual.get_node("RotateHolder").get_child(1).rotation = get_character_on_tile(surrounding_tile).rotation
@@ -74,7 +74,7 @@ func _input(event: InputEvent) -> void:
 						#tr
 						surrounding_tile=(Vector2i(clicked_tile.x+1,clicked_tile.y-1))
 						rotated_characters.append(get_character_on_tile(surrounding_tile))
-						visual_map.set_cell(surrounding_tile-clicked_tile,1,Vector2i.ZERO,map.get_cell_alternative_tile(surrounding_tile))
+						visual_map.set_cell(surrounding_tile-clicked_tile,map.get_cell_source_id(surrounding_tile),map.get_cell_atlas_coords(surrounding_tile),map.get_cell_alternative_tile(surrounding_tile))
 						if get_character_on_tile(surrounding_tile) != null:
 							visual.get_node("RotateHolder").get_child(2).texture = get_character_on_tile(surrounding_tile).get_node("Sprite2D").texture
 							visual.get_node("RotateHolder").get_child(2).rotation = get_character_on_tile(surrounding_tile).rotation
@@ -83,7 +83,7 @@ func _input(event: InputEvent) -> void:
 						#br
 						surrounding_tile=(Vector2i(clicked_tile.x+1,clicked_tile.y))
 						rotated_characters.append(get_character_on_tile(surrounding_tile))
-						visual_map.set_cell(surrounding_tile-clicked_tile,1,Vector2i.ZERO,map.get_cell_alternative_tile(surrounding_tile))	
+						visual_map.set_cell(surrounding_tile-clicked_tile,1,map.get_cell_atlas_coords(surrounding_tile),map.get_cell_alternative_tile(surrounding_tile))	
 						if get_character_on_tile(surrounding_tile) != null:	
 							visual.get_node("RotateHolder").get_child(3).texture = get_character_on_tile(surrounding_tile).get_node("Sprite2D").texture
 							visual.get_node("RotateHolder").get_child(3).rotation = get_character_on_tile(surrounding_tile).rotation
@@ -92,7 +92,7 @@ func _input(event: InputEvent) -> void:
 						#b
 						surrounding_tile=(Vector2i(clicked_tile.x,clicked_tile.y+1))
 						rotated_characters.append(get_character_on_tile(surrounding_tile))
-						visual_map.set_cell(surrounding_tile-clicked_tile,1,Vector2i.ZERO,map.get_cell_alternative_tile(surrounding_tile))
+						visual_map.set_cell(surrounding_tile-clicked_tile,map.get_cell_source_id(surrounding_tile),map.get_cell_atlas_coords(surrounding_tile),map.get_cell_alternative_tile(surrounding_tile))
 						if get_character_on_tile(surrounding_tile) != null:
 							visual.get_node("RotateHolder").get_child(4).texture = get_character_on_tile(surrounding_tile).get_node("Sprite2D").texture
 							visual.get_node("RotateHolder").get_child(4).rotation = get_character_on_tile(surrounding_tile).rotation
@@ -101,7 +101,7 @@ func _input(event: InputEvent) -> void:
 						#bl
 						surrounding_tile=(Vector2i(clicked_tile.x-1,clicked_tile.y))
 						rotated_characters.append(get_character_on_tile(surrounding_tile))
-						visual_map.set_cell(surrounding_tile-clicked_tile,1,Vector2i.ZERO,map.get_cell_alternative_tile(surrounding_tile))
+						visual_map.set_cell(surrounding_tile-clicked_tile,map.get_cell_source_id(surrounding_tile),map.get_cell_atlas_coords(surrounding_tile),map.get_cell_alternative_tile(surrounding_tile))
 						if get_character_on_tile(surrounding_tile) != null:
 							visual.get_node("RotateHolder").get_child(5).texture = get_character_on_tile(surrounding_tile).get_node("Sprite2D").texture
 							visual.get_node("RotateHolder").get_child(5).rotation = get_character_on_tile(surrounding_tile).rotation
@@ -110,7 +110,7 @@ func _input(event: InputEvent) -> void:
 						#tl
 						surrounding_tile=(Vector2i(clicked_tile.x-1,clicked_tile.y-1))
 						rotated_characters.append(get_character_on_tile(surrounding_tile))
-						visual_map.set_cell(surrounding_tile-clicked_tile,1,Vector2i.ZERO,map.get_cell_alternative_tile(surrounding_tile))
+						visual_map.set_cell(surrounding_tile-clicked_tile,map.get_cell_source_id(surrounding_tile),map.get_cell_atlas_coords(surrounding_tile),map.get_cell_alternative_tile(surrounding_tile))
 						if get_character_on_tile(surrounding_tile) != null:
 							visual.get_node("RotateHolder").get_child(6).texture = get_character_on_tile(surrounding_tile).get_node("Sprite2D").texture
 							visual.get_node("RotateHolder").get_child(6).rotation = get_character_on_tile(surrounding_tile).rotation
@@ -122,7 +122,7 @@ func _input(event: InputEvent) -> void:
 						#center
 						rotated_characters.append(get_character_on_tile(clicked_tile))
 
-						visual_map.set_cell(Vector2i.ZERO,1,Vector2i.ZERO,map.get_cell_alternative_tile(clicked_tile))		
+						visual_map.set_cell(Vector2i.ZERO,map.get_cell_source_id(clicked_tile),map.get_cell_atlas_coords(clicked_tile),map.get_cell_alternative_tile(clicked_tile))		
 						if get_character_on_tile(clicked_tile) != null:
 							visual.get_node("RotateHolder").get_child(0).texture = get_character_on_tile(clicked_tile).get_node_or_null("Sprite2D").texture
 							visual.get_node("RotateHolder").get_child(0).rotation = get_character_on_tile(clicked_tile).rotation
@@ -132,7 +132,7 @@ func _input(event: InputEvent) -> void:
 						
 						#t
 						surrounding_tile = (Vector2i(clicked_tile.x,clicked_tile.y-1))
-						visual_map.set_cell(surrounding_tile - clicked_tile,1,Vector2i.ZERO,map.get_cell_alternative_tile(surrounding_tile))	
+						visual_map.set_cell(surrounding_tile - clicked_tile,map.get_cell_source_id(surrounding_tile),map.get_cell_atlas_coords(surrounding_tile),map.get_cell_alternative_tile(surrounding_tile))	
 						rotated_characters.append(get_character_on_tile(surrounding_tile))
 						if get_character_on_tile(surrounding_tile) != null:
 							visual.get_node("RotateHolder").get_child(1).texture = get_character_on_tile(surrounding_tile).get_node_or_null("Sprite2D").texture
@@ -142,7 +142,7 @@ func _input(event: InputEvent) -> void:
 								
 						#tr
 						surrounding_tile=(Vector2i(clicked_tile.x+1,clicked_tile.y))
-						visual_map.set_cell(Vector2i(surrounding_tile.x-clicked_tile.x,surrounding_tile.y-clicked_tile.y-1),1,Vector2i.ZERO,map.get_cell_alternative_tile(surrounding_tile))
+						visual_map.set_cell(Vector2i(surrounding_tile.x-clicked_tile.x,surrounding_tile.y-clicked_tile.y-1),map.get_cell_source_id(surrounding_tile),map.get_cell_atlas_coords(surrounding_tile),map.get_cell_alternative_tile(surrounding_tile))
 						rotated_characters.append(get_character_on_tile(surrounding_tile))
 						if get_character_on_tile(surrounding_tile) != null:
 							visual.get_node("RotateHolder").get_child(2).texture = get_character_on_tile(surrounding_tile).get_node_or_null("Sprite2D").texture
@@ -151,7 +151,7 @@ func _input(event: InputEvent) -> void:
 							visual.get_node("RotateHolder").get_child(2).texture = null		
 						#br
 						surrounding_tile=(Vector2i(clicked_tile.x+1,clicked_tile.y+1))
-						visual_map.set_cell(Vector2i(surrounding_tile.x-clicked_tile.x,surrounding_tile.y-clicked_tile.y-1),1,Vector2i.ZERO,map.get_cell_alternative_tile(surrounding_tile))
+						visual_map.set_cell(Vector2i(surrounding_tile.x-clicked_tile.x,surrounding_tile.y-clicked_tile.y-1),map.get_cell_source_id(surrounding_tile),map.get_cell_atlas_coords(surrounding_tile),map.get_cell_alternative_tile(surrounding_tile))
 						rotated_characters.append(get_character_on_tile(surrounding_tile))
 						if get_character_on_tile(surrounding_tile) != null:
 							visual.get_node("RotateHolder").get_child(3).texture = get_character_on_tile(surrounding_tile).get_node_or_null("Sprite2D").texture
@@ -160,7 +160,7 @@ func _input(event: InputEvent) -> void:
 							visual.get_node("RotateHolder").get_child(3).texture = null
 						#b
 						surrounding_tile=(Vector2i(clicked_tile.x,clicked_tile.y+1))
-						visual_map.set_cell(surrounding_tile-clicked_tile,1,Vector2i.ZERO,map.get_cell_alternative_tile(surrounding_tile))	
+						visual_map.set_cell(surrounding_tile-clicked_tile,map.get_cell_source_id(surrounding_tile),map.get_cell_atlas_coords(surrounding_tile),map.get_cell_alternative_tile(surrounding_tile))	
 						
 						rotated_characters.append(get_character_on_tile(surrounding_tile))
 						if get_character_on_tile(surrounding_tile) != null:
@@ -170,7 +170,7 @@ func _input(event: InputEvent) -> void:
 							visual.get_node("RotateHolder").get_child(4).texture = null
 						#bl
 						surrounding_tile=(Vector2i(clicked_tile.x-1,clicked_tile.y+1))
-						visual_map.set_cell(Vector2i(surrounding_tile.x-clicked_tile.x,surrounding_tile.y-clicked_tile.y-1),1,Vector2i.ZERO,map.get_cell_alternative_tile(surrounding_tile))
+						visual_map.set_cell(Vector2i(surrounding_tile.x-clicked_tile.x,surrounding_tile.y-clicked_tile.y-1),map.get_cell_source_id(surrounding_tile),map.get_cell_atlas_coords(surrounding_tile),map.get_cell_alternative_tile(surrounding_tile))
 						rotated_characters.append(get_character_on_tile(surrounding_tile))
 						if get_character_on_tile(surrounding_tile) != null:
 							visual.get_node("RotateHolder").get_child(5).texture = get_character_on_tile(surrounding_tile).get_node_or_null("Sprite2D").texture
@@ -179,7 +179,7 @@ func _input(event: InputEvent) -> void:
 							visual.get_node("RotateHolder").get_child(5).texture = null	
 						#tl
 						surrounding_tile=(Vector2i(clicked_tile.x-1,clicked_tile.y))
-						visual_map.set_cell(Vector2i(surrounding_tile.x-clicked_tile.x,surrounding_tile.y-clicked_tile.y-1),1,Vector2i.ZERO,map.get_cell_alternative_tile(surrounding_tile))
+						visual_map.set_cell(Vector2i(surrounding_tile.x-clicked_tile.x,surrounding_tile.y-clicked_tile.y-1),map.get_cell_source_id(surrounding_tile),map.get_cell_atlas_coords(surrounding_tile),map.get_cell_alternative_tile(surrounding_tile))
 						rotated_characters.append(get_character_on_tile(surrounding_tile))
 						if get_character_on_tile(surrounding_tile) != null:
 							visual.get_node("RotateHolder").get_child(6).texture = get_character_on_tile(surrounding_tile).get_node_or_null("Sprite2D").texture
@@ -211,43 +211,43 @@ func apply_rotation(new_tile_array):
 			rotated_characters[i].global_rotation_degrees = $Visualmap/RotateHolder.get_child(i).global_rotation_degrees
 			rotated_characters[i].rotation_degrees = roundf(snapped(rotated_characters[i].rotation_degrees,60))
 			
-			print(rotated_characters[i].rotation_degrees)
+			#print(rotated_characters[i].rotation_degrees)
 	if selected_tile.x % 2 == 0:
 		#surrounding_tile = (Vector2i(selected_tile.x,selected_tile.y-1))
-		map.set_cell(Vector2i(selected_tile.x,selected_tile.y-1),2,Vector2i.ZERO,new_tile_array[0])		
+		map.set_cell(Vector2i(selected_tile.x,selected_tile.y-1),0,new_tile_array[0],0)		
 		#tr
 		#surrounding_tile=(Vector2i(clicked_tile.x+1,clicked_tile.y-1))
-		map.set_cell(Vector2i(selected_tile.x+1,selected_tile.y-1),2,Vector2i.ZERO,new_tile_array[1])	
+		map.set_cell(Vector2i(selected_tile.x+1,selected_tile.y-1),0,new_tile_array[1],0)	
 		#br
 		#surrounding_tile=(Vector2i(clicked_tile.x+1,clicked_tile.y))
-		map.set_cell(Vector2i(selected_tile.x+1,selected_tile.y),2,Vector2i.ZERO,new_tile_array[2])	
+		map.set_cell(Vector2i(selected_tile.x+1,selected_tile.y),0,new_tile_array[2],0)	
 		#b
 		#surrounding_tile=(Vector2i(clicked_tile.x,clicked_tile.y+1))
-		map.set_cell(Vector2i(selected_tile.x,selected_tile.y+1),2,Vector2i.ZERO,new_tile_array[3])		#bl
+		map.set_cell(Vector2i(selected_tile.x,selected_tile.y+1),0,new_tile_array[3],0)		#bl
 		#surrounding_tile=(Vector2i(clicked_tile.x-1,clicked_tile.y))
-		map.set_cell(Vector2i(selected_tile.x-1,selected_tile.y),2,Vector2i.ZERO,new_tile_array[4])	
+		map.set_cell(Vector2i(selected_tile.x-1,selected_tile.y),0,new_tile_array[4],0)	
 		#tl
 		#surrounding_tile=(Vector2i(clicked_tile.x-1,clicked_tile.y-1))
-		map.set_cell(Vector2i(selected_tile.x-1,selected_tile.y-1),2,Vector2i.ZERO,new_tile_array[5])	
+		map.set_cell(Vector2i(selected_tile.x-1,selected_tile.y-1),0,new_tile_array[5],0)	
 	else:
 		#t
 		#surrounding_tile = (Vector2i(clicked_tile.x,clicked_tile.y-1))
-		map.set_cell(Vector2i(selected_tile.x,selected_tile.y-1),2,Vector2i.ZERO,new_tile_array[0])	
+		map.set_cell(Vector2i(selected_tile.x,selected_tile.y-1),0,new_tile_array[0],0)	
 		#tr
 		#surrounding_tile=(Vector2i(clicked_tile.x+1,clicked_tile.y))
-		map.set_cell(Vector2i(selected_tile.x+1,selected_tile.y),2,Vector2i.ZERO,new_tile_array[1])
+		map.set_cell(Vector2i(selected_tile.x+1,selected_tile.y),0,new_tile_array[1],0)
 		#br
 		#surrounding_tile=(Vector2i(clicked_tile.x+1,clicked_tile.y+1))
-		map.set_cell(Vector2i(selected_tile.x+1,selected_tile.y+1),2,Vector2i.ZERO,new_tile_array[2])	
+		map.set_cell(Vector2i(selected_tile.x+1,selected_tile.y+1),0,new_tile_array[2],0)	
 		#b
 		#surrounding_tile=(Vector2i(clicked_tile.x,clicked_tile.y+1))
-		map.set_cell(Vector2i(selected_tile.x,selected_tile.y+1),2,Vector2i.ZERO,new_tile_array[3])
+		map.set_cell(Vector2i(selected_tile.x,selected_tile.y+1),0,new_tile_array[3],0)
 		#bl
 		#surrounding_tile=(Vector2i(clicked_tile.x-1,clicked_tile.y+1))
-		map.set_cell(Vector2i(selected_tile.x-1,selected_tile.y+1),2,Vector2i.ZERO,new_tile_array[4])	
+		map.set_cell(Vector2i(selected_tile.x-1,selected_tile.y+1),0,new_tile_array[4],0)	
 		#tl
 		#surrounding_tile=(Vector2i(clicked_tile.x-1,clicked_tile.y))
-		map.set_cell(Vector2i(selected_tile.x-1,selected_tile.y),2,Vector2i.ZERO,new_tile_array[5])	
+		map.set_cell(Vector2i(selected_tile.x-1,selected_tile.y),0,new_tile_array[5],0)	
 		
 			
 			
