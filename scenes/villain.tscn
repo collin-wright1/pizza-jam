@@ -21,7 +21,7 @@ sources/0 = SubResource("TileSetAtlasSource_buvie")
 [sub_resource type="CircleShape2D" id="CircleShape2D_ufdpd"]
 radius = 25.9422
 
-[node name="Villain" type="CharacterBody2D"]
+[node name="Villain" type="CharacterBody2D" groups=["Enemy"]]
 rotation = 1.5708
 script = ExtResource("1_gdtyu")
 

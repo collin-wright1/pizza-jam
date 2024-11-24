@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=4 uid="uid://by4174pqnrkcd"]
+[gd_scene load_steps=5 format=4 uid="uid://by4174pqnrkcd"]
 
 [ext_resource type="Script" path="res://scripts/game_controller.gd" id="1_myg7p"]
 [ext_resource type="PackedScene" uid="uid://b72wqoj6jd72s" path="res://scenes/test_area.tscn" id="2_32ljh"]
+[ext_resource type="PackedScene" uid="uid://dwo373kpn6los" path="res://scenes/villain.tscn" id="3_qyy45"]
 
 [sub_resource type="Environment" id="Environment_ofsct"]
 background_mode = 3
@@ -31,6 +32,18 @@ position = Vector2(198, 492)
 
 [node name="Training Dummy" parent="TestArea/EnemyHolder" index="0"]
 position = Vector2(426, 358)
+
+[node name="Enemy" parent="TestArea/EnemyHolder" index="1" instance=ExtResource("3_qyy45")]
+position = Vector2(801, 217)
+
+[node name="Enemy2" parent="TestArea/EnemyHolder" index="2" instance=ExtResource("3_qyy45")]
+position = Vector2(723, 354)
+
+[node name="Enemy3" parent="TestArea/EnemyHolder" index="3" instance=ExtResource("3_qyy45")]
+position = Vector2(574, 92)
+
+[node name="Enemy4" parent="TestArea/EnemyHolder" index="4" instance=ExtResource("3_qyy45")]
+position = Vector2(275, 177)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_ofsct")

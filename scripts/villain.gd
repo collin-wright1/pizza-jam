@@ -38,9 +38,8 @@ func _process(delta: float) -> void:
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey:
-		if event.pressed and event.keycode == KEY_C:
-			target_hero()
 		if event.pressed and event.keycode == KEY_SPACE:
+			target_hero()
 			move_forward()
 
 		else:

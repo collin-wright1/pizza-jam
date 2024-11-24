@@ -33,6 +33,8 @@ func _process(delta: float) -> void:
 			
 			if(characters_have_moved == false):
 				for unit in characters:
+					if unit.has_method("target_hero"):
+						unit.target_hero()
 					if unit.has_method("move_forward"):
 						unit.move_forward()
 				characters_have_moved = true
