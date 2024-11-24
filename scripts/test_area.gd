@@ -31,7 +31,7 @@ func _input(event: InputEvent) -> void:
 	match game_state:
 		game_states.picking:
 			if event is InputEventMouseButton and !visual.anim.is_playing() and get_parent().spins > 0:
-				if event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed():
+				if event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed() and check_for_walls(map.local_to_map(get_global_mouse_position())):
 					get_parent().decrement_spin()
 					#game_state = game_states.rotating
 					$Visualmap.get_node("AnimationPlayer").play("raise_up", -1, 2)
@@ -251,8 +251,49 @@ func apply_rotation(new_tile_array):
 		map.set_cell(Vector2i(selected_tile.x-1,selected_tile.y),1,new_tile_array[5],0)	
 		
 			
+func check_for_walls(center_tile : Vector2i):
+	
+	if map.get_cell_atlas_coords(center_tile) == Vector2i(2,0):
+		return false
+	
+	if center_tile.x % 2 == 0:			
+		if map.get_cell_atlas_coords(Vector2i(center_tile.x,center_tile.y-1)) == Vector2i(2,0):
+			return false
 			
-
+		if map.get_cell_atlas_coords(Vector2i(center_tile.x+1,center_tile.y)) == Vector2i(2,0):
+			return false
+		
+		if map.get_cell_atlas_coords(Vector2i(center_tile.x+1,center_tile.y+1)) == Vector2i(2,0):
+			return false
+		
+		if map.get_cell_atlas_coords(Vector2i(center_tile.x,center_tile.y+1)) == Vector2i(2,0):
+			return false
+		
+		if map.get_cell_atlas_coords(Vector2i(center_tile.x-1,center_tile.y)) == Vector2i(2,0):
+			return false
+		
+		if map.get_cell_atlas_coords(Vector2i(center_tile.x-1,center_tile.y-1)) == Vector2i(2,0):
+			return false
+	else:
+		if map.get_cell_atlas_coords(Vector2i(center_tile.x,center_tile.y-1)) == Vector2i(2,0):
+			return false
+			
+		if map.get_cell_atlas_coords(Vector2i(center_tile.x+1,center_tile.y-1)) == Vector2i(2,0):
+			return false
+		
+		if map.get_cell_atlas_coords(Vector2i(center_tile.x+1,center_tile.y)) == Vector2i(2,0):
+			return false
+		
+		if map.get_cell_atlas_coords(Vector2i(center_tile.x,center_tile.y+1)) == Vector2i(2,0):
+			return false
+		
+		if map.get_cell_atlas_coords(Vector2i(center_tile.x-1,center_tile.y+1)) == Vector2i(2,0):
+			return false
+		
+		if map.get_cell_atlas_coords(Vector2i(center_tile.x-1,center_tile.y)) == Vector2i(2,0):
+			return false
+		
+	return true
 
 func get_character_on_tile(tile_coord):
 	get_parent().clean_characters()
