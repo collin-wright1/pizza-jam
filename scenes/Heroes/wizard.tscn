@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dwmsdjktd4bwe"]
 
 [ext_resource type="PackedScene" uid="uid://c4ythv3xe6dex" path="res://scenes/hero.tscn" id="1_fn2y4"]
-[ext_resource type="Texture2D" uid="uid://dtqovca3rbpnw" path="res://sprites/mousemagewip.png" id="2_me1le"]
+[ext_resource type="Texture2D" uid="uid://o4h3j8d04edj" path="res://sprites/wizardmouse.png" id="2_3if4f"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gyoc0"]
 size = Vector2(20, 100)
@@ -12,12 +12,9 @@ height = 177.066
 
 [node name="Wizard" instance=ExtResource("1_fn2y4")]
 
-[node name="DebugLayer" parent="." index="0"]
-visible = true
-
 [node name="Sprite2D" parent="." index="1"]
 rotation = 0.0
-texture = ExtResource("2_me1le")
+texture = ExtResource("2_3if4f")
 
 [node name="Area2D" type="Area2D" parent="AttackHolder" index="0"]
 
@@ -30,7 +27,7 @@ position = Vector2(-2, 224)
 rotation = 1.56374
 shape = SubResource("CapsuleShape2D_5rorm")
 
-[node name="Polygon2D" type="Polygon2D" parent="AttackShower" index="0"]
+[node name="Polygon2D2" type="Polygon2D" parent="AttackShower" index="0"]
 position = Vector2(3.50293, 0)
 scale = Vector2(1.00585, 1)
 color = Color(3.22476e-06, 0.735401, 0.240407, 1)

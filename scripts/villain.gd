@@ -13,6 +13,9 @@ var rotation_amounts = [0,57,123,180,237,303]
 var destination : Vector2 = position
 var move_cooldown : bool = true
 
+var can_attack : bool = false
+var attack_targets = []
+
 func _ready() -> void:
 	for hitbox in attack_holder.get_children():
 		if hitbox is Area3D:
@@ -46,9 +49,9 @@ func _input(event: InputEvent) -> void:
 			pass
 
 func attack():
-	for hitbox in attack_holder.get_children():
-		if hitbox is Area3D:
-			hitbox.monitoring = true
+	for enemy in attack_targets:
+		if enemy.has_method("take_damage") and enemy.is_in_group("Hero"):
+			enemy.take_damage(attack_power)
 
 func on_enemy_targeted(body):
 	if body.is_in_group("Hero"):

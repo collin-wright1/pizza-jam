@@ -43,6 +43,9 @@ shape = SubResource("CircleShape2D_ufdpd")
 
 [node name="AttackShower" type="Node2D" parent="."]
 
+[node name="Polygon2D" type="Polygon2D" parent="AttackShower"]
+polygon = PackedVector2Array(0.000325799, 90, -11.9997, 75, -3.99973, 75, -3.99988, 33, 5.00012, 33, 5.00027, 75, 14.0003, 74.9999)
+
 [node name="MoveChecker" type="RayCast2D" parent="."]
 target_position = Vector2(0, 90)
 collision_mask = 131
