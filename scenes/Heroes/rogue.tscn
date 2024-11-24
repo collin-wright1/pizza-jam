@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://d3oadf73ou6cm"]
+
+[ext_resource type="PackedScene" uid="uid://c4ythv3xe6dex" path="res://scenes/hero.tscn" id="1_hfopl"]
+[ext_resource type="Texture2D" uid="uid://dqyv6s63t801" path="res://sprites/roguemouse.png" id="2_2jh0w"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_04dqs"]
+size = Vector2(21, 120)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y5vit"]
+size = Vector2(86.9561, 20)
+
+[node name="Rogue" instance=ExtResource("1_hfopl")]
+
+[node name="DebugLayer" parent="." index="0"]
+visible = true
+
+[node name="Sprite2D" parent="." index="1"]
+texture = ExtResource("2_2jh0w")
+
+[node name="Area2D" type="Area2D" parent="AttackHolder" index="0"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackHolder/Area2D" index="0"]
+position = Vector2(-42, 108)
+rotation = 0.994838
+shape = SubResource("RectangleShape2D_04dqs")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="AttackHolder/Area2D" index="1"]
+position = Vector2(49.609, 113.259)
+rotation = 0.558505
+shape = SubResource("RectangleShape2D_y5vit")
+
+[node name="AttackShower" parent="." index="4"]
+visible = true
+
+[node name="Polygon2D2" type="Polygon2D" parent="AttackShower" index="0"]
+color = Color(0, 0.693662, 0.38712, 1)
+polygon = PackedVector2Array(-88, 110, -98, 135, -68, 138, -75, 129, -1, 92, 67, 135, 61, 146, 89, 142, 79, 116, 71, 127, 8, 85, 8, 53, -8, 53, -10, 82, -80, 120)
