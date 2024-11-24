@@ -32,6 +32,7 @@ position = Vector2(198, 492)
 
 [node name="Enemy" parent="TestArea/EnemyHolder" index="0" instance=ExtResource("3_qyy45")]
 position = Vector2(122, 353)
+rotation = 1.0472
 
 [node name="GameOverPanel" parent="TestArea/CanvasLayer/Panel" index="3"]
 visible = false

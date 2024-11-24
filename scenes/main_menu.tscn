@@ -193,8 +193,7 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Instructions"
 
-[node name="Options" type="Button" parent="."]
-visible = false
+[node name="CreditsButton" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -207,7 +206,7 @@ offset_right = 319.0
 offset_bottom = 177.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Options?"
+text = "Credits"
 
 [node name="Instruction Panel" type="Panel" parent="."]
 visible = false
@@ -241,4 +240,5 @@ text = "X"
 
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="InstructionButton" to="." method="_on_instruction_button_pressed"]
+[connection signal="pressed" from="CreditsButton" to="." method="_on_credits_button_pressed"]
 [connection signal="pressed" from="Instruction Panel/InstructionExit" to="." method="_on_instruction_exit_pressed"]

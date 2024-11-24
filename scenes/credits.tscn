@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://cfs3egsg308ip"]
+[gd_scene load_steps=4 format=3 uid="uid://byujkn6c2fu6"]
 
 [ext_resource type="Texture2D" uid="uid://d2x0slr6tkkym" path="res://sprites/barbmouse.png" id="1_2p4hl"]
+[ext_resource type="Script" path="res://scripts/credits.gd" id="1_i136o"]
 [ext_resource type="Texture2D" uid="uid://dqyv6s63t801" path="res://sprites/roguemouse.png" id="2_8yi7w"]
 
 [node name="Credits" type="Control"]
@@ -10,6 +11,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_i136o")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 0
@@ -84,7 +86,7 @@ layout_mode = 0
 offset_top = 240.0
 offset_right = 192.0
 offset_bottom = 289.0
-text = "CDubs
+text = "Collin Wright
 Programming"
 horizontal_alignment = 1
 
@@ -103,6 +105,25 @@ offset_top = 469.0
 offset_right = 1152.0
 offset_bottom = 649.0
 theme_override_font_sizes/font_size = 21
-text = "Additional art done by Zooofiaaa and (insert other artist here)"
+text = "Creature Design and Art by Zooofiaaa and farrago_designs
+Music by Sean Kelly"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="ReturnButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -169.0
+offset_top = -99.0
+offset_right = -50.0
+offset_bottom = -54.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Return
+"
+
+[connection signal="pressed" from="ReturnButton" to="." method="_on_return_button_pressed"]
