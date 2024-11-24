@@ -14,12 +14,13 @@ var enemies_have_targeted = false
 @onready var game_over_panel: Panel = $TestArea/CanvasLayer/GameOverPanel
 @onready var retry_button: Button = $TestArea/CanvasLayer/Panel/GameOverPanel/RetryButton
 @onready var end_turn_button: TextureButton = $TestArea/CanvasLayer/EndTurnButton
-
+@onready var level_complete_panel: Panel = $TestArea/CanvasLayer/LevelCompletePanel
 
 enum game_states{
 	player_turn,
 	ai_turn, 
-	end_game
+	end_game,
+	level_complete
 }
 var current_game_state = game_states.player_turn
 
@@ -42,6 +43,9 @@ func _process(delta: float) -> void:
 			
 		game_states.end_game:
 			game_over_panel.show()
+			
+		game_states.level_complete:
+			level_complete_panel.show()
 			
 		game_states.ai_turn:
 			#print("Ai turn")
@@ -95,7 +99,7 @@ func check_game(characters):
 		return game_states.end_game
 	if(level_complete):
 		print("Level Complete")
-		return game_states.end_game
+		return game_states.level_complete
 	else:
 		enemies_have_targeted = false
 		return game_states.player_turn
@@ -134,3 +138,7 @@ func _on_end_turn_button_pressed() -> void:
 	characters_have_moved = false
 	current_game_state = game_states.ai_turn
 	end_turn_button.disabled = true
+
+
+func _on_home_button_pressed() -> void:
+	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
