@@ -1,8 +1,24 @@
-[gd_scene load_steps=5 format=4 uid="uid://by4174pqnrkcd"]
+[gd_scene load_steps=9 format=4 uid="uid://by4174pqnrkcd"]
 
 [ext_resource type="Script" path="res://scripts/game_controller.gd" id="1_myg7p"]
 [ext_resource type="PackedScene" uid="uid://b72wqoj6jd72s" path="res://scenes/test_area.tscn" id="2_32ljh"]
 [ext_resource type="PackedScene" uid="uid://dwo373kpn6los" path="res://scenes/villain.tscn" id="3_qyy45"]
+
+[sub_resource type="Gradient" id="Gradient_17yxi"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.539863, 1.03481e-06, 2.88785e-07, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_2kd6m"]
+gradient = SubResource("Gradient_17yxi")
+metadata/_snap_enabled = true
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_tn2xf"]
+gradient = SubResource("Gradient_17yxi")
+metadata/_snap_enabled = true
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_387h1"]
+gradient = SubResource("Gradient_17yxi")
+metadata/_snap_enabled = true
 
 [sub_resource type="Environment" id="Environment_ofsct"]
 background_mode = 3
@@ -34,13 +50,16 @@ position = Vector2(198, 492)
 position = Vector2(122, 353)
 rotation = 1.0472
 
-[node name="GameOverPanel" parent="TestArea/CanvasLayer/Panel" index="3"]
-visible = false
+[node name="EndTurnButton" parent="TestArea/CanvasLayer" index="0"]
+texture_normal = SubResource("GradientTexture2D_2kd6m")
+texture_pressed = SubResource("GradientTexture2D_tn2xf")
+texture_hover = SubResource("GradientTexture2D_387h1")
+texture_disabled = SubResource("GradientTexture2D_2kd6m")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_ofsct")
 
-[connection signal="pressed" from="TestArea/CanvasLayer/Panel/Button" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="TestArea/CanvasLayer/Panel/GameOverPanel/RetryButton" to="." method="_on_retry_button_pressed"]
+[connection signal="pressed" from="TestArea/CanvasLayer/EndTurnButton" to="." method="_on_end_turn_button_pressed"]
+[connection signal="pressed" from="TestArea/CanvasLayer/GameOverPanel/RetryButton" to="." method="_on_retry_button_pressed"]
 
 [editable path="TestArea"]

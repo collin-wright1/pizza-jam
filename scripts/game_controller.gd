@@ -10,9 +10,9 @@ var characters_have_moved = true
 var characters_have_attacked = false
 var all_have_moved
 #var game_state: State
-@onready var button: Button = $TestArea/CanvasLayer/Panel/Button
-@onready var game_over_panel: Panel = $TestArea/CanvasLayer/Panel/GameOverPanel
+@onready var game_over_panel: Panel = $TestArea/CanvasLayer/GameOverPanel
 @onready var retry_button: Button = $TestArea/CanvasLayer/Panel/GameOverPanel/RetryButton
+@onready var end_turn_button: TextureButton = $TestArea/CanvasLayer/EndTurnButton
 
 
 enum game_states{
@@ -23,15 +23,15 @@ enum game_states{
 var current_game_state = game_states.player_turn
 
 func _ready():
-	button.text = "3/3 Spins"
+	end_turn_button.get_node("Label").text = "3/3 Spins"
 
 func _process(delta: float) -> void:
 	match current_game_state:
 		game_states.player_turn:
 			if spins == 0:
-				button.disabled = false
+				end_turn_button.disabled = false
 			else:
-				button.disabled = true
+				end_turn_button.disabled = true
 			
 		game_states.end_game:
 			game_over_panel.show()
@@ -95,10 +95,9 @@ func check_game(characters):
 
 func decrement_spin():
 	spins -= 1
-	button.text = (str(spins) + "/3 Spins")
+	end_turn_button.get_node("Label").text = (str(spins) + "/3 Spins")
 	if(spins <= 0):
-		button.text = "End Turn"
-	$TestArea/CanvasLayer/Panel/SpinsLabel.text = str(spins)
+		end_turn_button.get_node("Label").text = "End Turn"
 	
 func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("show_moves"):
@@ -109,14 +108,6 @@ func _input(event: InputEvent) -> void:
 		for char in characters:
 			if char.get_node_or_null("AttackShower"):
 				char.get_node_or_null("AttackShower").hide()
-
-
-
-func _on_button_pressed() -> void:
-	characters_have_attacked = false
-	characters_have_moved = false
-	current_game_state = game_states.ai_turn
-	button.disabled = true
 	
 func clean_characters():
 	var new_array = []
@@ -128,3 +119,10 @@ func clean_characters():
 
 func _on_retry_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/game_controller.tscn")
+
+
+func _on_end_turn_button_pressed() -> void:
+	characters_have_attacked = false
+	characters_have_moved = false
+	current_game_state = game_states.ai_turn
+	end_turn_button.disabled = true

@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=4 uid="uid://b72wqoj6jd72s"]
+[gd_scene load_steps=25 format=4 uid="uid://b72wqoj6jd72s"]
 
 [ext_resource type="Script" path="res://scripts/test_area.gd" id="1_ksqw7"]
 [ext_resource type="Texture2D" uid="uid://swgnuwd8ie1y" path="res://sprites/hexes.png" id="2_kp7va"]
@@ -193,6 +193,14 @@ _data = {
 "raise_up": SubResource("Animation_33hk5")
 }
 
+[sub_resource type="Gradient" id="Gradient_17yxi"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.539863, 1.03481e-06, 2.88785e-07, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_w5fb2"]
+gradient = SubResource("Gradient_17yxi")
+metadata/_snap_enabled = true
+
 [node name="TestArea" type="Node2D"]
 script = ExtResource("1_ksqw7")
 
@@ -266,51 +274,47 @@ texture = ExtResource("4_16s7s")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Panel" type="Panel" parent="CanvasLayer"]
-offset_top = 578.0
-offset_right = 1149.0
-offset_bottom = 646.0
-
-[node name="SpinsLabel" type="Label" parent="CanvasLayer/Panel"]
-layout_mode = 0
-offset_left = 20.0
-offset_top = 20.0
-offset_right = 103.0
-offset_bottom = 43.0
-text = "Spins: 3 / 3"
-
-[node name="Button" type="Button" parent="CanvasLayer/Panel"]
-layout_mode = 0
+[node name="EndTurnButton" type="TextureButton" parent="CanvasLayer"]
 offset_left = 984.0
-offset_top = 6.0
+offset_top = 584.0
 offset_right = 1144.0
-offset_bottom = 64.0
-text = "End Turn"
+offset_bottom = 642.0
+texture_normal = SubResource("GradientTexture2D_w5fb2")
+stretch_mode = 0
 script = ExtResource("7_6wc73")
 
-[node name="TurnLabel" type="Label" parent="CanvasLayer/Panel"]
-layout_mode = 0
-offset_left = 884.0
-offset_top = 18.0
-offset_right = 984.0
-offset_bottom = 41.0
-text = "Turn: ???"
-
-[node name="GameOverPanel" type="Panel" parent="CanvasLayer/Panel"]
+[node name="Label" type="Label" parent="CanvasLayer/EndTurnButton"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -451.5
-offset_top = -531.0
-offset_right = 464.5
-offset_bottom = -76.0
+offset_left = -73.0
+offset_top = -26.0
+offset_right = 73.0
+offset_bottom = 26.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "End Turn"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GameOverPanel" type="Panel" parent="CanvasLayer"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -453.0
+offset_top = -243.0
+offset_right = 463.0
+offset_bottom = 212.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="CanvasLayer/Panel/GameOverPanel"]
+[node name="Label" type="Label" parent="CanvasLayer/GameOverPanel"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -331,7 +335,7 @@ GAME OVER.
 "
 horizontal_alignment = 1
 
-[node name="RetryButton" type="Button" parent="CanvasLayer/Panel/GameOverPanel"]
+[node name="RetryButton" type="Button" parent="CanvasLayer/GameOverPanel"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
