@@ -54,7 +54,7 @@ func _process(delta: float) -> void:
 				if char.move_cooldown == false:
 					all_have_moved = false
 					break
-				all_have_moved = true	
+				all_have_moved = true
 			
 			#TODO Enemy Attack Phase
 			if characters_have_attacked == false and all_have_moved == true:
