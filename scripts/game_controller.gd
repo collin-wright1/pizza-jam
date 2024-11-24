@@ -28,6 +28,9 @@ func _ready():
 func _process(delta: float) -> void:
 	match current_game_state:
 		game_states.player_turn:
+			for unit in characters:
+				if unit.has_method("target_hero"):
+					unit.target_hero()
 			if spins == 0:
 				end_turn_button.disabled = false
 			else:
