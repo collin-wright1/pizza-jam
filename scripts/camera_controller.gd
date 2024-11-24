@@ -45,5 +45,5 @@ func zoom_in():
 func zoom_out():
 	zoom -= Vector2(0.1,0.1)
 	zoom_mult += 0.3
-	if zoom.x <= 0.2:
-		zoom = Vector2(0.3,0.3)
+	if zoom.x <= 0.4:
+		zoom = Vector2(0.5,0.5)

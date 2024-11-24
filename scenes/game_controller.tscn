@@ -44,6 +44,11 @@ tile_map_data = PackedByteArray("AAABAAAAAQABAAAAAAAAAAEAAQABAAAAAAD//wAAAQACAAA
 
 [node name="Camera2D" parent="TestArea" index="1"]
 position = Vector2(580, 233)
+limit_left = -550
+limit_top = -550
+limit_right = 1500
+limit_bottom = 1500
+limit_smoothed = true
 
 [node name="Knight" parent="TestArea/HeroHolder" index="0"]
 position = Vector2(198, 492)
