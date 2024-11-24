@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dpvj8yp511yu5"
+path="res://.godot/imported/Steam Hit B.wav-5208bb7cabef57a6fc07a43e6f7feb0a.sample"
+
+[deps]
+
+source_file="res://Audio/Steam Hit B.wav"
+dest_files=["res://.godot/imported/Steam Hit B.wav-5208bb7cabef57a6fc07a43e6f7feb0a.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

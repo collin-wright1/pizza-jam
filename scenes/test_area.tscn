@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://b72wqoj6jd72s"]
+[gd_scene load_steps=28 format=4 uid="uid://b72wqoj6jd72s"]
 
 [ext_resource type="Script" path="res://scripts/test_area.gd" id="1_ksqw7"]
 [ext_resource type="Texture2D" uid="uid://swgnuwd8ie1y" path="res://sprites/hexes.png" id="2_kp7va"]
@@ -9,6 +9,9 @@
 [ext_resource type="Script" path="res://scripts/camera_controller.gd" id="5_7wwwt"]
 [ext_resource type="Script" path="res://scripts/visualmap.gd" id="5_ly1wp"]
 [ext_resource type="Script" path="res://scripts/end_turn_button.gd" id="7_6wc73"]
+[ext_resource type="AudioStream" uid="uid://bgcx0q7eehjj0" path="res://Audio/Steam Hit A.wav" id="9_fqrm0"]
+[ext_resource type="AudioStream" uid="uid://dpvj8yp511yu5" path="res://Audio/Steam Hit B.wav" id="10_i1wpn"]
+[ext_resource type="AudioStream" uid="uid://beh3xfvn1tvsn" path="res://Audio/Mr Banks Main.wav" id="12_ksqlb"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ixb2q"]
 texture = ExtResource("2_kp7va")
@@ -131,6 +134,30 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector2(1.25, 1.25)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sounds/Up:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sounds/Down:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_ecefi"]
 resource_name = "lower_down"
@@ -158,6 +185,18 @@ tracks/1/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sounds/Down:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.433333),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_33hk5"]
 resource_name = "raise_up"
@@ -180,6 +219,18 @@ tracks/1/path = NodePath(".:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sounds/Up:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -272,6 +323,16 @@ texture = ExtResource("4_16s7s")
 position = Vector2(-75, -50)
 texture = ExtResource("4_16s7s")
 
+[node name="Sounds" type="Node2D" parent="Visualmap"]
+
+[node name="Up" type="AudioStreamPlayer2D" parent="Visualmap/Sounds"]
+stream = ExtResource("9_fqrm0")
+volume_db = -11.223
+
+[node name="Down" type="AudioStreamPlayer2D" parent="Visualmap/Sounds"]
+stream = ExtResource("10_i1wpn")
+pitch_scale = 0.74
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="EndTurnButton" type="TextureButton" parent="CanvasLayer"]
@@ -349,6 +410,12 @@ offset_bottom = 79.5
 grow_horizontal = 2
 grow_vertical = 2
 text = "Retry?"
+
+[node name="Music" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("12_ksqlb")
+volume_db = -9.727
+pitch_scale = 0.82
+autoplay = true
 
 [connection signal="input_event" from="Visualmap/StaticBody2D" to="." method="_on_static_body_2d_input_event"]
 [connection signal="input_event" from="Visualmap/StaticBody2D" to="Visualmap" method="_on_static_body_2d_input_event"]

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://beh3xfvn1tvsn"
+path="res://.godot/imported/Mr Banks Main.wav-bf94e0dd20c929086fbde19d4cc05b69.sample"
+
+[deps]
+
+source_file="res://Audio/Mr Banks Main.wav"
+dest_files=["res://.godot/imported/Mr Banks Main.wav-bf94e0dd20c929086fbde19d4cc05b69.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
