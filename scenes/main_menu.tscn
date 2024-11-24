@@ -163,7 +163,7 @@ offset_bottom = 255.0
 scale = Vector2(0.655, 0.655)
 texture = ExtResource("3_ilcc5")
 
-[node name="Button" type="Button" parent="."]
+[node name="StartButton" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -178,7 +178,7 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Play"
 
-[node name="Button2" type="Button" parent="."]
+[node name="InstructionButton" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -193,7 +193,8 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Instructions"
 
-[node name="Button3" type="Button" parent="."]
+[node name="Options" type="Button" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -207,3 +208,37 @@ offset_bottom = 177.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Options?"
+
+[node name="Instruction Panel" type="Panel" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 136.0
+offset_top = 93.0
+offset_right = 1052.0
+offset_bottom = 548.0
+
+[node name="Label" type="Label" parent="Instruction Panel"]
+layout_mode = 0
+offset_left = 33.0
+offset_top = 32.0
+offset_right = 871.0
+offset_bottom = 422.0
+text = "Greetings clock maker, your goal is to eliminate pests that have overrun your clock.  Luckily you've created 
+small creatures of your own to eliminate these pests.  Rotate the floors of your clock to line up your 
+units. 
+
+You cannot move through walls.
+You lose if all your units die.
+
+DEFEAT all PESTS"
+
+[node name="InstructionExit" type="Button" parent="Instruction Panel"]
+layout_mode = 0
+offset_left = 871.0
+offset_right = 904.0
+offset_bottom = 32.0
+text = "X"
+
+[connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="InstructionButton" to="." method="_on_instruction_button_pressed"]
+[connection signal="pressed" from="Instruction Panel/InstructionExit" to="." method="_on_instruction_exit_pressed"]
