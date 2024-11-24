@@ -69,7 +69,7 @@ func rotate_right() -> Array:
 		visual_selection.set_cell(vector,1,original_tiles[count],0)
 		count +=1
 	get_parent().apply_rotation(original_tiles)
-	$AnimationPlayer.play("lower_down")
+	$AnimationPlayer.play("lower_down", -1, 2)
 	return	original_tiles
 	
 	

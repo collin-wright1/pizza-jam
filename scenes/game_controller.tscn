@@ -30,24 +30,16 @@ position = Vector2(580, 233)
 [node name="Knight" parent="TestArea/HeroHolder" index="0"]
 position = Vector2(198, 492)
 
-[node name="Training Dummy" parent="TestArea/EnemyHolder" index="0"]
-position = Vector2(426, 358)
+[node name="Enemy" parent="TestArea/EnemyHolder" index="0" instance=ExtResource("3_qyy45")]
+position = Vector2(122, 353)
 
-[node name="Enemy" parent="TestArea/EnemyHolder" index="1" instance=ExtResource("3_qyy45")]
-position = Vector2(801, 217)
-
-[node name="Enemy2" parent="TestArea/EnemyHolder" index="2" instance=ExtResource("3_qyy45")]
-position = Vector2(723, 354)
-
-[node name="Enemy3" parent="TestArea/EnemyHolder" index="3" instance=ExtResource("3_qyy45")]
-position = Vector2(574, 92)
-
-[node name="Enemy4" parent="TestArea/EnemyHolder" index="4" instance=ExtResource("3_qyy45")]
-position = Vector2(275, 177)
+[node name="GameOverPanel" parent="TestArea/CanvasLayer/Panel" index="3"]
+visible = false
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_ofsct")
 
 [connection signal="pressed" from="TestArea/CanvasLayer/Panel/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="TestArea/CanvasLayer/Panel/GameOverPanel/RetryButton" to="." method="_on_retry_button_pressed"]
 
 [editable path="TestArea"]

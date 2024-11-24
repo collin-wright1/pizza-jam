@@ -11,11 +11,14 @@ var characters_have_attacked = false
 var all_have_moved
 #var game_state: State
 @onready var button: Button = $TestArea/CanvasLayer/Panel/Button
+@onready var game_over_panel: Panel = $TestArea/CanvasLayer/Panel/GameOverPanel
+@onready var retry_button: Button = $TestArea/CanvasLayer/Panel/GameOverPanel/RetryButton
 
 
 enum game_states{
 	player_turn,
-	ai_turn
+	ai_turn, 
+	end_game
 }
 var current_game_state = game_states.player_turn
 
@@ -29,6 +32,9 @@ func _process(delta: float) -> void:
 				button.disabled = false
 			else:
 				button.disabled = true
+			
+		game_states.end_game:
+			game_over_panel.show()
 			
 		game_states.ai_turn:
 			#print("Ai turn")
@@ -46,9 +52,6 @@ func _process(delta: float) -> void:
 					all_have_moved = false
 					break
 				all_have_moved = true	
-					
-			
-			#TODO enemy move?
 			
 			#TODO Enemy Attack Phase
 			if characters_have_attacked == false and all_have_moved == true:
@@ -61,12 +64,33 @@ func _process(delta: float) -> void:
 				#await get_tree().create_timer(1).timeout
 				spins = 4
 				decrement_spin()
-				current_game_state = game_states.player_turn
-			
-			
-			
-			
-			
+				current_game_state = check_game(characters)
+
+func check_game(characters):
+	var heroes = []
+	var enemies = []
+	var game_over = true
+	var level_complete = true
+	for unit in characters:
+		if(unit.is_in_group("Enemy")):
+			enemies.append(unit)
+		if(unit.is_in_group("Hero")):
+			heroes.append(unit)
+	for unit in heroes:
+		if(unit.health > 0):
+			game_over = false
+	for unit in enemies:
+		if(unit.health > 0):
+			level_complete = false
+
+	if(game_over):
+		print("Game Over")
+		return game_states.end_game
+	if(level_complete):
+		print("Level Complete")
+		return game_states.end_game
+	else:
+		return game_states.player_turn
 
 
 func decrement_spin():
@@ -101,3 +125,6 @@ func clean_characters():
 			new_array.append(char)
 	characters = new_array.duplicate(true)
 			
+
+func _on_retry_button_pressed() -> void:
+	get_tree().change_scene_to_file("res://scenes/game_controller.tscn")

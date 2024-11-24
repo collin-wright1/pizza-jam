@@ -34,7 +34,7 @@ func _input(event: InputEvent) -> void:
 				if event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed():
 					get_parent().decrement_spin()
 					#game_state = game_states.rotating
-					$Visualmap.get_node("AnimationPlayer").play("raise_up")
+					$Visualmap.get_node("AnimationPlayer").play("raise_up", -1, 2)
 					visual_map.show()
 
 					var clicked_tile = map.local_to_map(get_global_mouse_position())
@@ -187,7 +187,7 @@ func _input(event: InputEvent) -> void:
 							visual.get_node("RotateHolder").get_child(6).rotation = get_character_on_tile(surrounding_tile).rotation
 						else:
 							visual.get_node("RotateHolder").get_child(6).texture = null
-					await get_tree().create_timer(1).timeout
+					await get_tree().create_timer(0.5).timeout
 					visual.rotate_right()
 			
 		#game_states.rotating:
