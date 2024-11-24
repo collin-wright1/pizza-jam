@@ -1,9 +1,15 @@
-[gd_scene load_steps=10 format=4 uid="uid://by4174pqnrkcd"]
+[gd_scene load_steps=16 format=4 uid="uid://by4174pqnrkcd"]
 
 [ext_resource type="Script" path="res://scripts/game_controller.gd" id="1_myg7p"]
 [ext_resource type="PackedScene" uid="uid://b72wqoj6jd72s" path="res://scenes/test_area.tscn" id="2_32ljh"]
-[ext_resource type="PackedScene" uid="uid://dwo373kpn6los" path="res://scenes/villain.tscn" id="3_qyy45"]
+[ext_resource type="PackedScene" uid="uid://d3oadf73ou6cm" path="res://scenes/Heroes/rogue.tscn" id="3_6hpqt"]
 [ext_resource type="Texture2D" uid="uid://isvcx2kqbn8i" path="res://gears.webp" id="4_ru3iv"]
+[ext_resource type="PackedScene" uid="uid://dwmsdjktd4bwe" path="res://scenes/Heroes/wizard.tscn" id="4_xgptm"]
+[ext_resource type="PackedScene" uid="uid://4qfpdaxkjiap" path="res://scenes/Enemies/roach.tscn" id="5_q3wso"]
+[ext_resource type="AudioStream" uid="uid://qjtkklu74ant" path="res://Audio/Impact Fatality 001.wav" id="5_rmivc"]
+[ext_resource type="AudioStream" uid="uid://bytyaimqqoakp" path="res://Audio/Windsor Main.wav" id="6_ifghq"]
+[ext_resource type="PackedScene" uid="uid://ljqlgfj0f5nt" path="res://scenes/Enemies/mantis.tscn" id="6_y8084"]
+[ext_resource type="PackedScene" uid="uid://dffkjbflf7hlr" path="res://scenes/Enemies/ladybug.tscn" id="7_c2bs0"]
 
 [sub_resource type="Gradient" id="Gradient_17yxi"]
 offsets = PackedFloat32Array(0)
@@ -39,7 +45,6 @@ script = ExtResource("1_myg7p")
 [node name="TestArea" parent="." instance=ExtResource("2_32ljh")]
 
 [node name="TileMapLayer" parent="TestArea" index="0"]
-position = Vector2(-94, 44)
 tile_map_data = PackedByteArray("AAABAAAAAQABAAAAAAAAAAEAAQABAAAAAAD//wAAAQACAAAAAAD/////AQACAAAAAAAAAP//AQABAAAAAAABAAEAAQAGAAAAAAACAAAAAQABAAAAAAACAP//AQABAAAAAAADAP//AQAGAAAAAAAEAAAAAQABAAAAAAAEAAEAAQAGAAAAAAADAAEAAQAGAAAAAAADAAAAAQABAAAAAAACAAIAAQABAAAAAAADAAIAAQABAAAAAAAEAAIAAQAHAAAAAAAFAAEAAQABAAAAAAAGAAEAAQAHAAAAAAAHAAAAAQABAAAAAAAGAAAAAQAGAAAAAAAHAP//AQABAAAAAAAGAP//AQABAAAAAAAFAP//AQAHAAAAAAAFAAIAAQABAAAAAAAGAAIAAQAGAAAAAAAHAAEAAQABAAAAAAAIAAEAAQABAAAAAAAIAAAAAQAGAAAAAAAIAP//AQABAAAAAAAHAP7/AQABAAAAAAAFAAAAAQAGAAAAAAAGAP7/AQACAAAAAAAFAP3/AQACAAAAAAAEAP7/AQACAAAAAAADAP7/AQABAAAAAAAFAP7/AQABAAAAAAAEAP//AQABAAAAAAACAP7/AQACAAAAAAABAP7/AQABAAAAAAACAAEAAQAGAAAAAAD//wIAAQACAAAAAAD//wEAAQACAAAAAAAAAAIAAQABAAAAAAABAAIAAQAHAAAAAAABAAMAAQAGAAAAAAAAAAMAAQABAAAAAAACAAMAAQABAAAAAAADAAMAAQABAAAAAAAEAAMAAQAGAAAAAAACAAQAAQAHAAAAAAAHAP3/AQACAAAAAAAJAP//AQABAAAAAAABAP//AQAHAAAAAAAAAAAAAQABAAAAAAADAP3/AQACAAAAAAD///7/AQACAAAAAAAAAP7/AQACAAAAAAD///3/AQACAAAAAAABAP3/AQACAAAAAAD//wMAAQACAAAAAAAAAAQAAQABAAAAAAAEAAQAAQABAAAAAAAFAAMAAQABAAAAAAAGAAMAAQABAAAAAAAHAAMAAQABAAAAAAAHAAIAAQAGAAAAAAAIAAMAAQAGAAAAAAAJAAIAAQAGAAAAAAAJAAEAAQAGAAAAAAAKAAEAAQAHAAAAAAAKAAAAAQAGAAAAAAAJAP7/AQABAAAAAAAIAP7/AQACAAAAAAAAAAUAAQABAAAAAAAAAAYAAQABAAAAAAABAAQAAQABAAAAAAABAAUAAQABAAAAAAABAAYAAQAGAAAAAAACAAUAAQAGAAAAAAACAAYAAQAGAAAAAAADAAQAAQAGAAAAAAADAAUAAQABAAAAAAADAAYAAQABAAAAAAAEAAUAAQAHAAAAAAAEAAYAAQABAAAAAAAFAAQAAQAGAAAAAAAFAAUAAQABAAAAAAAFAAYAAQABAAAAAAAGAAQAAQAHAAAAAAAGAAUAAQABAAAAAAAGAAYAAQAGAAAAAAAHAAQAAQAGAAAAAAAHAAUAAQABAAAAAAAHAAYAAQABAAAAAAAIAAIAAQABAAAAAAAIAAQAAQAGAAAAAAAIAAUAAQABAAAAAAAIAAYAAQABAAAAAAAJAAAAAQABAAAAAAAJAAMAAQABAAAAAAAJAAQAAQABAAAAAAAJAAUAAQAHAAAAAAAJAAYAAQABAAAAAAAKAP7/AQACAAAAAAAKAP//AQABAAAAAAAKAAIAAQAGAAAAAAAKAAMAAQAHAAAAAAAKAAQAAQAGAAAAAAAKAAUAAQAGAAAAAAAKAAYAAQABAAAAAAALAP7/AQABAAAAAAALAP//AQABAAAAAAALAAAAAQABAAAAAAALAAEAAQAGAAAAAAALAAIAAQABAAAAAAALAAMAAQAGAAAAAAALAAQAAQABAAAAAAALAAUAAQAGAAAAAAALAAYAAQABAAAAAAAMAP7/AQACAAAAAAAMAP//AQABAAAAAAAMAAAAAQAHAAAAAAAMAAEAAQAGAAAAAAAMAAIAAQAGAAAAAAAMAAMAAQABAAAAAAAMAAQAAQAGAAAAAAAMAAUAAQAHAAAAAAAMAAYAAQABAAAAAAANAP//AQABAAAAAAANAAAAAQABAAAAAAANAAEAAQABAAAAAAANAAIAAQAHAAAAAAANAAMAAQAGAAAAAAANAAQAAQABAAAAAAANAAUAAQABAAAAAAANAAYAAQABAAAAAAAOAP//AQABAAAAAAAOAAAAAQABAAAAAAAOAAEAAQABAAAAAAAOAAIAAQABAAAAAAAOAAMAAQABAAAAAAAOAAQAAQABAAAAAAAOAAUAAQABAAAAAAAOAAYAAQABAAAAAAAAAAcAAQACAAAAAAABAAcAAQACAAAAAAACAAcAAQACAAAAAAADAAcAAQACAAAAAAAEAAcAAQACAAAAAAAFAAcAAQACAAAAAAAGAAcAAQACAAAAAAAHAAcAAQACAAAAAAAIAAcAAQACAAAAAAAJAAcAAQACAAAAAAAKAAcAAQACAAAAAAALAAcAAQACAAAAAAAMAAcAAQACAAAAAAANAAcAAQACAAAAAAAOAAcAAQACAAAAAAAPAAYAAQACAAAAAAAPAAUAAQACAAAAAAAPAAQAAQACAAAAAAAPAAMAAQACAAAAAAAPAAIAAQACAAAAAAAPAAEAAQACAAAAAAAPAAAAAQACAAAAAAAPAP//AQACAAAAAAD//wUAAQACAAAAAAD//wYAAQACAAAAAAANAP7/AQABAAAAAAAJAP3/AQACAAAAAAALAP3/AQACAAAAAAANAP3/AQACAAAAAAAOAP7/AQACAAAAAAAPAP7/AQACAAAAAAD//wQAAQACAAAAAAA=")
 
 [node name="Camera2D" parent="TestArea" index="1"]
@@ -51,11 +56,25 @@ limit_bottom = 1500
 limit_smoothed = true
 
 [node name="Knight" parent="TestArea/HeroHolder" index="0"]
-position = Vector2(198, 492)
+position = Vector2(950, 43)
 
-[node name="Enemy" parent="TestArea/EnemyHolder" index="0" instance=ExtResource("3_qyy45")]
-position = Vector2(122, 353)
-rotation = 1.0472
+[node name="Rogue" parent="TestArea/HeroHolder" index="1" instance=ExtResource("3_6hpqt")]
+position = Vector2(426, 5)
+
+[node name="Wizard" parent="TestArea/HeroHolder" index="2" instance=ExtResource("4_xgptm")]
+position = Vector2(649, -46)
+
+[node name="Roach" parent="TestArea/EnemyHolder" index="0" instance=ExtResource("5_q3wso")]
+position = Vector2(503, 487)
+rotation = -3.14159
+
+[node name="Mantis" parent="TestArea/EnemyHolder" index="1" instance=ExtResource("6_y8084")]
+position = Vector2(198, 403)
+rotation = -3.14159
+
+[node name="Villain" parent="TestArea/EnemyHolder" index="2" instance=ExtResource("7_c2bs0")]
+position = Vector2(873, 535)
+rotation = 3.14159
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="TestArea/CanvasLayer" index="0"]
 
@@ -77,6 +96,16 @@ texture_disabled = SubResource("GradientTexture2D_2kd6m")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_ofsct")
+
+[node name="Audio" type="Node2D" parent="."]
+
+[node name="Character Death" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("5_rmivc")
+volume_db = -5.985
+
+[node name="Character Death2" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("6_ifghq")
+pitch_scale = 0.82
 
 [connection signal="pressed" from="TestArea/CanvasLayer/EndTurnButton" to="." method="_on_end_turn_button_pressed"]
 [connection signal="pressed" from="TestArea/CanvasLayer/GameOverPanel/RetryButton" to="." method="_on_retry_button_pressed"]

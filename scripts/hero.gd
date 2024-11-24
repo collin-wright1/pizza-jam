@@ -57,18 +57,8 @@ func attack():
 			enemy.take_damage(attack_power)
 
 func on_enemy_targeted(body):
-	
 	attack_targets.append(body)
-	
-	
-	#print("entity seen")
-	#if body.is_in_group("Enemy"):
-		#if body.has_method("take_damage"):
-			#body.take_damage(attack_power)
-	##await get_tree().create_timer(1).timeout
-	#for hitbox in attack_holder.get_children():
-		#if hitbox is Area3D:
-			#hitbox.monitoring = false
+
 func on_enemy_left(body):
 	attack_targets.pop_at(attack_targets.find(body))
 			

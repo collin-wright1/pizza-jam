@@ -18,8 +18,9 @@ var attack_targets = []
 
 func _ready() -> void:
 	for hitbox in attack_holder.get_children():
-		if hitbox is Area3D:
-			hitbox.body_entered.connect("on_enemy_targeted")
+		if hitbox is Area2D:
+			hitbox.body_entered.connect(on_enemy_targeted)
+			hitbox.body_exited.connect(on_enemy_left)
 
 func _process(delta: float) -> void:
 	if(move_cooldown == false):
@@ -37,13 +38,14 @@ func _process(delta: float) -> void:
 	
 
 func _input(event: InputEvent) -> void:
-	if event is InputEventKey:
-		if event.pressed and event.keycode == KEY_SPACE:
-			target_hero()
-			move_forward()
+	pass
+	#if event is InputEventKey:
+		#if event.pressed and event.keycode == KEY_SPACE:
+			#target_hero()
+			#move_forward()
 
-		else:
-			pass
+		#else:
+			#pass
 
 func attack():
 	for enemy in attack_targets:
@@ -51,9 +53,10 @@ func attack():
 			enemy.take_damage(attack_power)
 
 func on_enemy_targeted(body):
-	if body.is_in_group("Hero"):
-		if body.has_method("take_damage"):
-			body.take_damage
+	attack_targets.append(body)
+	
+func on_enemy_left(body):
+	attack_targets.pop_at(attack_targets.find(body))
 			
 func take_damage(damage):
 	health -= damage

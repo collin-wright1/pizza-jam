@@ -11,9 +11,6 @@ size = Vector2(86.9561, 20)
 
 [node name="Rogue" instance=ExtResource("1_hfopl")]
 
-[node name="DebugLayer" parent="." index="0"]
-visible = true
-
 [node name="Sprite2D" parent="." index="1"]
 texture = ExtResource("2_2jh0w")
 

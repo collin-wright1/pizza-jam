@@ -28,6 +28,7 @@ func _ready():
 func _process(delta: float) -> void:
 	match current_game_state:
 		game_states.player_turn:
+			clean_characters()
 			for unit in characters:
 				if unit.has_method("target_hero"):
 					unit.target_hero()
