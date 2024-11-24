@@ -1,0 +1,33 @@
+[gd_scene load_steps=7 format=3 uid="uid://ljqlgfj0f5nt"]
+
+[ext_resource type="PackedScene" uid="uid://dwo373kpn6los" path="res://scenes/villain.tscn" id="1_gjtq1"]
+[ext_resource type="Texture2D" uid="uid://b7nowcwqiewv2" path="res://sprites/pest2.png" id="2_6hhlb"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_r1u48"]
+radius = 32.249
+
+[sub_resource type="SphereMesh" id="SphereMesh_bdfxr"]
+
+[sub_resource type="Gradient" id="Gradient_k3tq6"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.689963, 0, 0.095104, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_kg6iw"]
+gradient = SubResource("Gradient_k3tq6")
+
+[node name="Mantis" instance=ExtResource("1_gjtq1")]
+
+[node name="Sprite2D" parent="." index="1"]
+texture = ExtResource("2_6hhlb")
+
+[node name="Area2D" type="Area2D" parent="AttackHolder" index="0"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackHolder/Area2D" index="0"]
+position = Vector2(0, 88)
+shape = SubResource("CircleShape2D_r1u48")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="AttackShower" index="0"]
+position = Vector2(-4.76837e-07, 89)
+scale = Vector2(61.585, 56.182)
+mesh = SubResource("SphereMesh_bdfxr")
+texture = SubResource("GradientTexture2D_kg6iw")

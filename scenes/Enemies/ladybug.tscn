@@ -1,0 +1,37 @@
+[gd_scene load_steps=4 format=3 uid="uid://dffkjbflf7hlr"]
+
+[ext_resource type="PackedScene" uid="uid://dwo373kpn6los" path="res://scenes/villain.tscn" id="1_ur8yo"]
+[ext_resource type="Texture2D" uid="uid://b1c7juchu0pcn" path="res://sprites/pest1.png" id="2_iq645"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d2yjh"]
+size = Vector2(46, 107)
+
+[node name="Villain" instance=ExtResource("1_ur8yo")]
+
+[node name="Sprite2D" parent="." index="1"]
+texture = ExtResource("2_iq645")
+
+[node name="Area2D" type="Area2D" parent="AttackHolder" index="0"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackHolder/Area2D" index="0"]
+position = Vector2(-74, 177)
+shape = SubResource("RectangleShape2D_d2yjh")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="AttackHolder/Area2D" index="1"]
+position = Vector2(72, 178)
+shape = SubResource("RectangleShape2D_d2yjh")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="AttackHolder/Area2D" index="2"]
+position = Vector2(0, 224)
+shape = SubResource("RectangleShape2D_d2yjh")
+
+[node name="Polygon2D2" type="Polygon2D" parent="AttackShower" index="1"]
+position = Vector2(0, 6)
+color = Color(0.819457, 0, 0.109387, 1)
+polygon = PackedVector2Array(-71, 119, -15, 162, 65, 133, 58, 116, 88, 118, 87, 149, 73, 141, -16, 187, -81, 136)
+
+[node name="Polygon2D3" type="Polygon2D" parent="AttackShower" index="2"]
+position = Vector2(0, 90)
+scale = Vector2(-1, 1)
+color = Color(0.819457, 0, 0.109387, 1)
+polygon = PackedVector2Array(-71, 119, -15, 162, 65, 133, 58, 116, 88, 118, 87, 149, 73, 141, -16, 187, -81, 136)
