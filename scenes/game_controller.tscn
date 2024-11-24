@@ -12,19 +12,27 @@
 [ext_resource type="PackedScene" uid="uid://dffkjbflf7hlr" path="res://scenes/Enemies/ladybug.tscn" id="7_c2bs0"]
 
 [sub_resource type="Gradient" id="Gradient_17yxi"]
+offsets = PackedFloat32Array(0.00650759)
+colors = PackedColorArray(4.33177e-07, 0.587142, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_mw5do"]
+gradient = SubResource("Gradient_17yxi")
+metadata/_snap_enabled = true
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_uf23d"]
+gradient = SubResource("Gradient_17yxi")
+metadata/_snap_enabled = true
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_hok8y"]
+gradient = SubResource("Gradient_17yxi")
+metadata/_snap_enabled = true
+
+[sub_resource type="Gradient" id="Gradient_jrikf"]
 offsets = PackedFloat32Array(0)
 colors = PackedColorArray(0.539863, 1.03481e-06, 2.88785e-07, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_2kd6m"]
-gradient = SubResource("Gradient_17yxi")
-metadata/_snap_enabled = true
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_tn2xf"]
-gradient = SubResource("Gradient_17yxi")
-metadata/_snap_enabled = true
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_387h1"]
-gradient = SubResource("Gradient_17yxi")
+gradient = SubResource("Gradient_jrikf")
 metadata/_snap_enabled = true
 
 [sub_resource type="Environment" id="Environment_ofsct"]
@@ -52,7 +60,7 @@ position = Vector2(580, 233)
 limit_left = -550
 limit_top = -550
 limit_right = 1500
-limit_bottom = 1500
+limit_bottom = 1100
 limit_smoothed = true
 
 [node name="Knight" parent="TestArea/HeroHolder" index="0"]
@@ -89,9 +97,9 @@ region_enabled = true
 region_rect = Rect2(622.63, 507.132, 6000, 6000)
 
 [node name="EndTurnButton" parent="TestArea/CanvasLayer" index="1"]
-texture_normal = SubResource("GradientTexture2D_2kd6m")
-texture_pressed = SubResource("GradientTexture2D_tn2xf")
-texture_hover = SubResource("GradientTexture2D_387h1")
+texture_normal = SubResource("GradientTexture2D_mw5do")
+texture_pressed = SubResource("GradientTexture2D_uf23d")
+texture_hover = SubResource("GradientTexture2D_hok8y")
 texture_disabled = SubResource("GradientTexture2D_2kd6m")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]

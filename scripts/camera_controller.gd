@@ -27,6 +27,7 @@ func _input(event: InputEvent) -> void:
 	if dragging and event is InputEventMouseMotion:
 		#position += original_pos - get_global_mouse_position()
 		position += original_pos - get_global_mouse_position()
+		position = position.clamp(Vector2(-550, -550), Vector2(1500, 1100))
 	if Input.is_action_just_pressed("zoom_in"):
 		zoom_in()
 	if Input.is_action_just_pressed("zoom_out"):

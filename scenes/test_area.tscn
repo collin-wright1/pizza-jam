@@ -245,8 +245,8 @@ _data = {
 }
 
 [sub_resource type="Gradient" id="Gradient_17yxi"]
-offsets = PackedFloat32Array(0)
-colors = PackedColorArray(0.539863, 1.03481e-06, 2.88785e-07, 1)
+offsets = PackedFloat32Array(0.00650759)
+colors = PackedColorArray(4.33177e-07, 0.587142, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_w5fb2"]
 gradient = SubResource("Gradient_17yxi")
@@ -341,6 +341,7 @@ offset_top = 584.0
 offset_right = 1144.0
 offset_bottom = 642.0
 texture_normal = SubResource("GradientTexture2D_w5fb2")
+texture_disabled = SubResource("GradientTexture2D_w5fb2")
 stretch_mode = 0
 script = ExtResource("7_6wc73")
 
