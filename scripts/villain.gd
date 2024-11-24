@@ -26,9 +26,6 @@ func _process(delta: float) -> void:
 		position = position.move_toward(destination, movement_speed)
 		if(position == destination):
 			move_cooldown = true
-	#rotation_degrees = snapped(rotation_degrees, 60)
-	#print(rotation_degrees)
-	#print("snapped", snapped(rotation_degrees, 60))
 	if rotation_degrees == 60:
 		rotation_degrees = 57
 	if rotation_degrees == 120:
@@ -75,7 +72,9 @@ func move_forward():
 			destination = Vector2(position.x - 75, position.y + 50)
 		elif(snapped(rotation_degrees, 60) == 120):
 			destination = Vector2(position.x - 75, position.y - 50)
-		elif(snapped(rotation_degrees, 60) == 180):
+			print("Debuggin")
+		elif(snapped(rotation_degrees, 60) == -180 or snapped(rotation_degrees, 60) == 180):
+			print("Debuggin2")
 			destination = Vector2(position.x, position.y - 100)
 		elif(snapped(rotation_degrees, 60) == -120):
 			destination = Vector2(position.x + 75, position.y - 50)
