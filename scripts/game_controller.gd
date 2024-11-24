@@ -9,6 +9,7 @@ var characters = []
 var characters_have_moved = true
 var characters_have_attacked = false
 var all_have_moved
+var enemies_have_targeted = false
 #var game_state: State
 @onready var game_over_panel: Panel = $TestArea/CanvasLayer/GameOverPanel
 @onready var retry_button: Button = $TestArea/CanvasLayer/Panel/GameOverPanel/RetryButton
@@ -29,9 +30,11 @@ func _process(delta: float) -> void:
 	match current_game_state:
 		game_states.player_turn:
 			clean_characters()
-			for unit in characters:
-				if unit.has_method("target_hero"):
-					unit.target_hero()
+			if !enemies_have_targeted:
+				for unit in characters:
+					if unit.has_method("target_hero"):
+						unit.target_hero()
+				enemies_have_targeted = true		
 			if spins == 0:
 				end_turn_button.disabled = false
 			else:
@@ -45,8 +48,8 @@ func _process(delta: float) -> void:
 			
 			if(characters_have_moved == false):
 				for unit in characters:
-					if unit.has_method("target_hero"):
-						unit.target_hero()
+					#if unit.has_method("target_hero"):
+						#unit.target_hero()
 					if unit.has_method("move_forward"):
 						unit.move_forward()
 				characters_have_moved = true
@@ -94,6 +97,7 @@ func check_game(characters):
 		print("Level Complete")
 		return game_states.end_game
 	else:
+		enemies_have_targeted = false
 		return game_states.player_turn
 
 

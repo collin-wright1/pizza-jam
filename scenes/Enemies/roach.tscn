@@ -1,29 +1,18 @@
-[gd_scene load_steps=4 format=3 uid="uid://4qfpdaxkjiap"]
+[gd_scene load_steps=3 format=3 uid="uid://4qfpdaxkjiap"]
 
 [ext_resource type="PackedScene" uid="uid://dwo373kpn6los" path="res://scenes/villain.tscn" id="1_vj2n4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y50p8"]
-size = Vector2(20, 126)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_3nqiy"]
-size = Vector2(48, 45)
+size = Vector2(20, 236)
 
 [node name="Roach" instance=ExtResource("1_vj2n4")]
 
 [node name="Area2D" type="Area2D" parent="AttackHolder" index="0"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackHolder/Area2D" index="0"]
-position = Vector2(-74.865, 90)
+position = Vector2(-1, 176)
 shape = SubResource("RectangleShape2D_y50p8")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="AttackHolder/Area2D" index="1"]
-position = Vector2(80, 95)
-shape = SubResource("RectangleShape2D_y50p8")
-
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="AttackHolder/Area2D" index="2"]
-position = Vector2(-1, 179.5)
-shape = SubResource("RectangleShape2D_3nqiy")
-
-[node name="Polygon2D2" type="Polygon2D" parent="AttackShower" index="1"]
+[node name="Polygon2D2" type="Polygon2D" parent="AttackShower" index="0"]
 color = Color(0.81868, 0.0267375, 5.77569e-07, 1)
-polygon = PackedVector2Array(-83, 35, -75.4304, 35, -67, 35, -66, 129, -3, 167, 54, 133, 59, 41, 47, 39, 62, 19, 74, 40, 67, 41, 67, 143, -1, 183, -81, 130)
+polygon = PackedVector2Array(-18, 264, -7, 264, -9, 63, 8, 63, 8, 264, 18, 264, 1, 294)
