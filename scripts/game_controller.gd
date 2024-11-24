@@ -19,6 +19,8 @@ enum game_states{
 }
 var current_game_state = game_states.player_turn
 
+func _ready():
+	button.text = "3/3 Spins"
 
 func _process(delta: float) -> void:
 	match current_game_state:
@@ -69,6 +71,9 @@ func _process(delta: float) -> void:
 
 func decrement_spin():
 	spins -= 1
+	button.text = (str(spins) + "/3 Spins")
+	if(spins <= 0):
+		button.text = "End Turn"
 	$TestArea/CanvasLayer/Panel/SpinsLabel.text = str(spins)
 	
 func _input(event: InputEvent) -> void:
