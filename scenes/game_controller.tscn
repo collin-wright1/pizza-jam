@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://by4174pqnrkcd"]
+[gd_scene load_steps=19 format=4 uid="uid://by4174pqnrkcd"]
 
 [ext_resource type="Script" path="res://scripts/game_controller.gd" id="1_myg7p"]
 [ext_resource type="PackedScene" uid="uid://b72wqoj6jd72s" path="res://scenes/test_area.tscn" id="2_32ljh"]
@@ -10,6 +10,7 @@
 [ext_resource type="AudioStream" uid="uid://bytyaimqqoakp" path="res://Audio/Windsor Main.wav" id="6_ifghq"]
 [ext_resource type="PackedScene" uid="uid://ljqlgfj0f5nt" path="res://scenes/Enemies/mantis.tscn" id="6_y8084"]
 [ext_resource type="PackedScene" uid="uid://dffkjbflf7hlr" path="res://scenes/Enemies/ladybug.tscn" id="7_c2bs0"]
+[ext_resource type="AudioStream" uid="uid://ckd714i2lsbe0" path="res://Audio/jam combat.mp3" id="9_3uk27"]
 
 [sub_resource type="Gradient" id="Gradient_17yxi"]
 offsets = PackedFloat32Array(0.00650759)
@@ -151,6 +152,10 @@ offset_bottom = 79.5
 grow_horizontal = 2
 grow_vertical = 2
 text = "Main Menu"
+
+[node name="Music" parent="TestArea" index="6"]
+stream = ExtResource("9_3uk27")
+volume_db = -4.697
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_ofsct")
